@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 @theme{
-  --fundo-primario: #FFFFFF;
-  --fundo-secundario: #F9FAFB;
-  --borda: #E5E7EB;
+  --color-fundo-primario: #FFFFFF;
+  --color-fundo-secundario: #F9FAFB;
+  --color-borda: #E5E7EB;
 
-  --texto-secundario: #6B7280;
-  --titulos-principais: #111827;
+  --color-texto-secundario: #6B7280;
+  --color-titulos-principais: #111827;
 
-  --cor-primaria: #7C3AED;
-  --hover: #6D28D9;
-  --destaque-suave: #DDD6FE;
+  --color-cor-primaria: #7C3AED;
+  --color-hover: #6D28D9;
+  --color-destaque-suave: #DDD6FE;
 
-  --sucesso: #16A34A;
-  --erro: #DC2626;
-  --desconto: #F59E0B;
+  --color-sucesso: #16A34A;
+  --color-erro: #DC2626;
+  --color-desconto: #F59E0B;
 
 
   
@@ -22,23 +22,23 @@
 @layer components{
   .h1 {
     @apply text-[32px] font-bold;
-    color: var(--titulos-principais);
+    color: var(--color-titulos-principais);
   }
   .h2 {
     @apply text-[24px] font-semibold;
-    color: var(--titulos-principais);
+    color: var(--color-titulos-principais);
   }
   .h3 {
     @apply text-[20px] font-semibold;
-    color: var(--titulos-principais);
+    color: var(--color-titulos-principais);
   }
-  .text-secundario{
+  .texto-secundario{
     @apply text-[14px] font-normal;
-    color: var(--texto-secundario);
+    color: var(--color-texto-secundario);
   }
   .destaque-preco{
     @apply text-[20px] font-semibold;
-    color: var(--cor-primaria);
+    color: var(--color-cor-primaria);
   }
 
 }
@@ -51,4 +51,5 @@ html, body{
 
 body{
   font-family: var(--font-inter), sans-serif;
+  background-color: var(--color-fundo-primario);
 }
