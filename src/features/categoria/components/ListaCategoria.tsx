@@ -16,7 +16,7 @@ export default function ListaCategoria({categorias}: ListaCategoriaProps) {
     return(
         <>
             <section className="w-full h-auto flex flex-col items-center justify-center gap-4 pt-4 
-            relative py-4">
+            relative py-4 border-b border-borda">
                 
 
                 <div className="pointer-events-none absolute left-0 top-0 h-full w-16
@@ -39,6 +39,7 @@ export default function ListaCategoria({categorias}: ListaCategoriaProps) {
                         </SwiperSlide>
                     ))}
                 </Swiper>
+
             </section>
         </>
     )
