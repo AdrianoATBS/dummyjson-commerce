@@ -1,14 +1,14 @@
 interface BotaoGenericoProps{
     texto: string;
-    onClick: () => void;
-    ClassName?: string;
+    onClick?: () => void;
+    className?: string;
     disabled?: boolean;
 }
 
-export default function BotaoGenerico({texto, onClick, ClassName, disabled } : BotaoGenericoProps )
+export default function BotaoGenerico({texto, onClick, className, disabled } : BotaoGenericoProps )
 {
     return(
-        <button className={ClassName} onClick={onClick} disabled={disabled}>{texto}
+        <button className={className} onClick={onClick} disabled={disabled}>{texto}
         </button>
     )
 
