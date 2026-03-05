@@ -1,20 +1,23 @@
 "use client";
-import { useState, useEffect, use } from "react";
-import { ProdutoResumo } from "../type";
+import { useState, useEffect } from "react";
+import { ProdutoDetalhado, ProdutoResumo } from "../type";
 import { getProdutosPaginacao } from "../services/getProdutos";
 import CardProdutos from "./CardProdutos";
 import BotaoGenerico from "@/shared/components/botaoGenerico";
-
-export default function ProdutoGrid() {
+import Link from "next/link";
+interface CardProdutosProps {
+    produto: ProdutoDetalhado;
+}
+export default function ProdutoGrid({produto}: CardProdutosProps){ 
     const [paginaAtual, setPaginaAtual] = useState(1);
     const [produtos, setProdutos] = useState<ProdutoResumo[]>([]);
     const [totalProdutos, setTotalProdutos] = useState(0);
-    const itensPorPagina = 9;
+    const TAMANHO_DA_PAGINA = 9;
 
     useEffect(() => {
         const fetchProdutos = async () => {
             try{
-                const data = await getProdutosPaginacao(paginaAtual, itensPorPagina);
+                const data = await getProdutosPaginacao(paginaAtual, TAMANHO_DA_PAGINA);
                 setProdutos(data.products);
                 setTotalProdutos(data.total);
             }
@@ -29,7 +32,7 @@ export default function ProdutoGrid() {
         fetchProdutos();
     }, [paginaAtual]);
 
-    const totalPaginas = Math.ceil(totalProdutos / itensPorPagina);
+    const totalPaginas = Math.ceil(totalProdutos / TAMANHO_DA_PAGINA);
     const handlePaginaAnterior = () => {
         if(paginaAtual > 1){
             setPaginaAtual(paginaAtual - 1);
@@ -46,7 +49,10 @@ export default function ProdutoGrid() {
     <>
       <section className="grid grid-cols-3 gap-4 pt-4 pb-4">
         {produtos.map((produto) => (
-          <CardProdutos produto={produto} key={produto.id} />
+            <Link href={`/produto/${produto.id}`} key={produto.id} 
+                className="w-full">
+                    <CardProdutos produto={produto} key={produto.id} />
+            </Link>
         ))}
       </section>
 
