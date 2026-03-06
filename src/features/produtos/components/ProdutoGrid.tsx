@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { ProdutoDetalhado, ProdutoResumo } from "../type";
+import { ProdutoResumo } from "../type";
 import { getProdutosPaginacao } from "../services/getProdutos";
 import CardProdutos from "./CardProdutos";
 import BotaoGenerico from "@/shared/components/botaoGenerico";
