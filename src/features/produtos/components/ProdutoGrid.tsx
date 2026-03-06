@@ -5,10 +5,9 @@ import { getProdutosPaginacao } from "../services/getProdutos";
 import CardProdutos from "./CardProdutos";
 import BotaoGenerico from "@/shared/components/botaoGenerico";
 import Link from "next/link";
-interface CardProdutosProps {
-    produto: ProdutoDetalhado;
-}
-export default function ProdutoGrid({produto}: CardProdutosProps){ 
+
+
+export default function ProdutoGrid(){ 
     const [paginaAtual, setPaginaAtual] = useState(1);
     const [produtos, setProdutos] = useState<ProdutoResumo[]>([]);
     const [totalProdutos, setTotalProdutos] = useState(0);
@@ -51,7 +50,7 @@ export default function ProdutoGrid({produto}: CardProdutosProps){
         {produtos.map((produto) => (
             <Link href={`/produto/${produto.id}`} key={produto.id} 
                 className="w-full">
-                    <CardProdutos produto={produto} key={produto.id} />
+                    <CardProdutos produto={produto} />
             </Link>
         ))}
       </section>
