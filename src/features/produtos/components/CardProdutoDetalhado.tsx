@@ -2,6 +2,7 @@
 import BotaoGenerico from "@/shared/components/botaoGenerico";
 import { ProdutoDetalhado } from "../type";
 import Image from "next/image";
+import { GoStarFill } from "react-icons/go";
 
 interface CardProdutoDetalhadoProps {
     produto: ProdutoDetalhado;
@@ -21,7 +22,9 @@ export default function CardProdutoDetalhado({ produto }: CardProdutoDetalhadoPr
 
             <h2 className="h2">{produto.title}</h2>
             <p className="text-texto-secundario">{produto.brand}</p>
-            <p className="text-texto-secundario">{produto.rating} ⭐</p>
+            <p className="text-texto-secundario flex items-center">
+                {produto.rating} <span className="ml-1 text-yellow-400 "> <GoStarFill /> </span>
+            </p>
             <p className="destaque-preco">${produto.price.toFixed(2)}</p>
 
             {produto.discountPercentage > 0 && (
