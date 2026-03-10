@@ -10,11 +10,4 @@ export async function getProdutos(): Promise<ProdutoResumo[]> {
     return data.products;
 }
 
-export async function getProdutosPaginacao(pagina: number, limite: number): Promise<ProdutoResponse> {
-    const skip = (pagina - 1) * limite;
-    const data = await fetcher<ProdutoResponse>
-    (`/products?limit=${limite}&skip=${skip}`);
-    return data;
-
-}
 
