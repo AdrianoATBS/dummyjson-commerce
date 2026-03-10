@@ -3,7 +3,7 @@ import { getProduto } from "@/features/produtos/services/getProduto";
 import ProdutoDescricao from "@/features/produtos/components/ProdutoDescricao";
 import ProdutosRelacionados from "@/features/produtos/components/ProdutosRelacionados";
 import { getProdutosRelacionados } from "@/features/produtos/services/getProdutosRelacionados";
-import { embaralharProdutos } from "@/shared/utils/mbaralharProdutos";
+import { embaralharProdutos } from "@/shared/utils/shuffleProdutos";
 export default async function ProdutoDetalhesPage({ params }: { params: Promise<{ id: string }> }) {
 
     const {id} = await params;
