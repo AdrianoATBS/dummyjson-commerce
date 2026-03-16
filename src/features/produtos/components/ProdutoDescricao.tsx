@@ -9,7 +9,7 @@ export default function ProdutoDescricao({produto}: ProdutoDescricaoProps) {
     const [abrirDescricao, setAbrirDescricao] = useState(false);
     
     function handleToggleDescricao() {
-        setAbrirDescricao(!abrirDescricao);
+        setAbrirDescricao(prev => !prev);
     }
     return(
         <section className="max-w-2xl mt-10 ">
