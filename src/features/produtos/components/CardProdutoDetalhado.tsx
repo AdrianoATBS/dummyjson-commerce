@@ -8,6 +8,8 @@ interface CardProdutoDetalhadoProps {
     produto: ProdutoDetalhado;
 }
 export default function CardProdutoDetalhado({ produto }: CardProdutoDetalhadoProps) {
+
+    const precoFinal = produto.price * (1 - produto.discountPercentage / 100);
     return(
         <>
         <section className="max-w-6xl mx-auto gap-5 p-4
@@ -25,13 +27,20 @@ export default function CardProdutoDetalhado({ produto }: CardProdutoDetalhadoPr
             <p className="text-texto-secundario flex items-center">
                 {produto.rating} <span className="ml-1 text-yellow-400 "> <GoStarFill /> </span>
             </p>
-            <p className="destaque-preco">${produto.price.toFixed(2)}</p>
-
-            {produto.discountPercentage > 0 && (
+            
+            {produto.discountPercentage > 0 ? (
+                <>
+                <p className="text-texto-secundario line-through">R$ {produto.price.toFixed(2)}</p>
+                <p className="destaque-preco">R$ {precoFinal.toFixed(2)}</p>
                 <p className="text-green-600 font-semibold">
                     {produto.discountPercentage}% de desconto
                 </p>
-            )}
+                <p></p>
+
+                </>
+                ) : (
+                    <p className="h3">R$ {precoFinal.toFixed(2)}</p>
+                )}
 
             <p className="texto-secundario">{produto.stock} unidades em estoque</p>
             <BotaoGenerico texto="Adicionar ao Carrinho" onClick={() => alert("Produto adicionado ao carrinho!")} 

@@ -3,6 +3,6 @@ import { Categoria } from "../type";
 
 
 
-export  function getCategoria(): Promise<Categoria[]> {
-    return fetcher("/products/categories")
+export async  function getCategoria(): Promise<Categoria[]> {
+    return await fetcher("/products/categories")
 }

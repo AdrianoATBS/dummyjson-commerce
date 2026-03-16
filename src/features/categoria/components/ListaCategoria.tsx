@@ -35,7 +35,8 @@ export default function ListaCategoria({categorias}: ListaCategoriaProps) {
                     {categorias.map((categoria) => (
                         <SwiperSlide key={categoria.slug} style={{width: "auto"}}>
                             <h2 className="h3 text-texto-secundario p-2 px-5 rounded-full hover:bg-fundo-secundario 
-                            hover:text-destaque-suave transition-all duration-200 active:scale-95 cursor-pointer">{categoria.name}</h2>
+                            hover:text-destaque-suave transition-all 
+                            duration-200 active:scale-95 cursor-pointer">{categoria.name}</h2>
                         </SwiperSlide>
                     ))}
                 </Swiper>

@@ -32,6 +32,7 @@ export default function ProdutoGrid(){
     }, [paginaAtual]);
 
     const totalPaginas = Math.ceil(totalProdutos / TAMANHO_DA_PAGINA);
+    
     const handlePaginaAnterior = () => {
         if(paginaAtual > 1){
             setPaginaAtual(paginaAtual - 1);
