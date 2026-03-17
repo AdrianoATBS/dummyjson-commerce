@@ -1,8 +1,12 @@
-import Header  from "@/shared/components/header";
-import Footer from "@/shared/components/footer";
+import Header  from "@/shared/components/Header";
+import Footer from "@/shared/components/Footer";
 import "@/app/globals.css";
 
-export default function StoreLayout({ children }: { children: React.ReactNode }) {
+type Props = {
+  children: React.ReactNode;
+}
+
+export default function StoreLayout({ children }: Props) {
   return (
     <>
       <Header />
