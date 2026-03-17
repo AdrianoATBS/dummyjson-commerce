@@ -1,5 +1,5 @@
 "use client";
-import BotaoGenerico from "@/shared/components/botaoGenerico";
+import BotaoGenerico from "@/shared/components/BotaoGenerico";
 import { ProdutoDetalhado } from "../type";
 import Image from "next/image";
 import { GoStarFill } from "react-icons/go";
