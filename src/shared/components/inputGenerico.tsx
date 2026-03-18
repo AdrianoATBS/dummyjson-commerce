@@ -1,10 +1,11 @@
-type Type = "text" | "email" | "password" | "number" | "search" | "tel" | "url";
+type Type = "text" | "email" | "password" | "number" | "search" | "tel" | "url" | "checkbox" | "radio" | "date" | "datetime-local" | "month" | "time" | "week";
 interface InputGenericoProps {
     type?: Type;
     placeholder?: string;
     value?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     className?: string;
+    name?: string;
 
 }
 
