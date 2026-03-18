@@ -10,14 +10,14 @@ export default function LoginForm() {
                 
                 <InputGenerico type="text" placeholder="Digite Seu Usuario"
                 className="h3 border border-borda rounded-md px-3 py-2 shadow-sm
-                focus:outline-none focus:ring-2 focus:ring-blue-500 "/>
+                focus:outline-none focus:ring-2 focus:ring-cor-primaria "/>
                 
                 <InputGenerico type="password" placeholder="Digite Sua Senha"
                 className="h3 border border-borda rounded-md px-3 py-2 shadow-sm
-                focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                focus:outline-none focus:ring-2 focus:ring-cor-primaria" />
 
                 <BotaoGenerico texto="Entrar" onClick={() => console.log("Login clicado")} 
-                    className="w-40 h3 border border-borda rounded-lg px-3 py-2 shadow-sm
+                    className="w-full h3 border border-borda rounded-lg px-3 py-2 shadow-sm
                      cursor-pointer active:scale-95
                      hover:bg-cor-primaria hover:text-destaque-suave" />
                 
