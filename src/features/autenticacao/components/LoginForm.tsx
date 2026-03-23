@@ -25,7 +25,7 @@ export default function LoginForm() {
                 </div>
                 
                 <BotaoGenerico texto="Entrar" onClick={() => console.log("Login clicado")} 
-                    className="w-full h3 border border-borda rounded-lg px-3 py-2 shadow-sm
+                    className="w-full h3 border border-borda text-cor-primaria rounded-lg px-3 py-2 shadow-sm
                      cursor-pointer active:scale-95
                      hover:bg-cor-primaria hover:text-destaque-suave" />
                 
