@@ -12,7 +12,7 @@ export default function LoginForm() {
     const [userName, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = async (e: React.FormEvent) =>{
+    const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) =>{
         e.preventDefault();
         try{
             const autenticacao = await loginUser(userName, password);
