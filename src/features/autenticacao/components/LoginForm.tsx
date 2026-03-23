@@ -2,9 +2,35 @@
 import BotaoGenerico from "@/shared/components/BotaoGenerico";
 import InputGenerico from "@/shared/components/InputGenerico";
 import Link from "next/link";
+import { useState } from "react";
+import { loginUser } from "../services/loginUser";
+import { useRouter } from "next/navigation";
+
 export default function LoginForm() {
+    const router = useRouter();
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    async function handleSubmit(e: React.FormEvent)
+    {
+        e.preventDefault();
+        try{
+            const user = await loginUser(username, password);
+            console.log("Login bem-sucedido:", user);
+            router.push("/");
+        }catch(error){
+            console.error("Erro ao fazer login:", error);
+            alert("Falha no login. Verifique suas credenciais e tente novamente.");
+        }
+        finally{
+            setUsername("");
+            setPassword("");
+        }
+    }
+
     return(
-        <form className="flex flex-col items-center justify-center
+        <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center
          border border-borda rounded-2xl p-6 shadow-md gap-4">
                 <h1 className="h1 font-bold bg-gradient-to-r from-hover to-cor-primaria bg-clip-text text-transparent">Login</h1>
                 
@@ -12,6 +38,8 @@ export default function LoginForm() {
                 <label className="self-start text-lg font-medium text-cor-primaria">Usuario: </label>
 
                     <InputGenerico type="text" placeholder="Digite Seu Usuario"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                     className="h3 border border-borda rounded-md px-3 py-2 shadow-sm
                     focus:outline-none focus:ring-2 focus:ring-cor-primaria "/>
                 </div>
@@ -20,11 +48,13 @@ export default function LoginForm() {
                     <label className="self-start text-lg font-medium text-cor-primaria">Senha: </label>
 
                     <InputGenerico type="password" placeholder="Digite Sua Senha"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="h3 border border-borda rounded-md px-3 py-2 shadow-sm
                     focus:outline-none focus:ring-2 focus:ring-cor-primaria" />
                 </div>
                 
-                <BotaoGenerico texto="Entrar" onClick={() => console.log("Login clicado")} 
+                <BotaoGenerico texto="Entrar" 
                     className="w-full h3 border border-borda text-cor-primaria rounded-lg px-3 py-2 shadow-sm
                      cursor-pointer active:scale-95
                      hover:bg-cor-primaria hover:text-destaque-suave" />
