@@ -9,21 +9,19 @@ import { useRouter } from "next/navigation";
 export default function LoginForm() {
     const router = useRouter();
 
-    const [username, setUsername] = useState("");
+    const [userName, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    async function handleSubmit(e: React.FormEvent)
-    {
+    const handleSubmit = async (e: React.FormEvent) =>{
         e.preventDefault();
         try{
-            const user = await loginUser(username, password);
-            console.log("Login bem-sucedido:", user);
+            const autenticacao = await loginUser(userName, password);
+            localStorage.setItem("autenticacao", JSON.stringify(autenticacao));
             router.push("/");
         }catch(error){
             console.error("Erro ao fazer login:", error);
-            alert("Falha no login. Verifique suas credenciais e tente novamente.");
-        }
-        finally{
+
+        }finally{
             setUsername("");
             setPassword("");
         }
@@ -38,7 +36,7 @@ export default function LoginForm() {
                 <label className="self-start text-lg font-medium text-cor-primaria">Usuario: </label>
 
                     <InputGenerico type="text" placeholder="Digite Seu Usuario"
-                    value={username}
+                    value={userName}
                     onChange={(e) => setUsername(e.target.value)}
                     className="h3 border border-borda rounded-md px-3 py-2 shadow-sm
                     focus:outline-none focus:ring-2 focus:ring-cor-primaria "/>
