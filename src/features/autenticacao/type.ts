@@ -1,4 +1,4 @@
-export interface Autenticacao{
+export interface RegisterUser {
     id: number,
     username: string,
     firstName: string,
@@ -7,4 +7,9 @@ export interface Autenticacao{
     image: string,
     accessToken: string
     refreshToken: string
+}
+
+export interface AutenticacaoResumo{
+    username: string;
+    password: string;
 }
