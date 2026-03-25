@@ -11,28 +11,45 @@ export default function ProdutoGrid(){
     const [paginaAtual, setPaginaAtual] = useState(1);
     const [produtos, setProdutos] = useState<ProdutoResumo[]>([]);
     const [totalProdutos, setTotalProdutos] = useState(0);
-    const TAMANHO_DA_PAGINA = 9;
+    const [carregando, setCarregando] = useState(false);
+    const [erro, setErro] = useState<string | null>(null);
+    const TAMANHHO_DA_PAGINA = 9;
 
     useEffect(() => {
         const fetchProdutos = async () => {
-            try{
-                const data = await getProdutosPaginacao(paginaAtual, TAMANHO_DA_PAGINA);
-                setProdutos(data.products);
-                setTotalProdutos(data.total);
-            }
+          try{
+            setCarregando(true);
+            const data = await getProdutosPaginacao(paginaAtual, TAMANHHO_DA_PAGINA);
+            setProdutos(data.products);
+            setTotalProdutos(data.total);
+          }
             catch(error){
-                console.error("Erro ao buscar produtos:", error);
-            
+                setErro("Erro ao buscar produtos.");  
+             
             }
             finally{
-                console.log("Busca de produtos finalizada");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                setCarregando(false);
             }
-        };
+        }
+
         fetchProdutos();
     }, [paginaAtual]);
 
-    const totalPaginas = Math.ceil(totalProdutos / TAMANHO_DA_PAGINA);
-    
+    if(carregando){
+        return <div className="flex items-center justify-center h-64">
+            <span className="text-lg text-texto-secundario">Carregando produtos...</span>
+        </div>
+    }
+
+    if(erro){
+        return <div className="flex items-center justify-center h-64">
+            <span className="text-lg text-red-500">{erro}</span>
+        </div>
+    }
+  
+    const totalPaginas = Math.ceil(totalProdutos / TAMANHHO_DA_PAGINA);
+
     const handlePaginaAnterior = () => {
         if(paginaAtual > 1){
             setPaginaAtual(paginaAtual - 1);
