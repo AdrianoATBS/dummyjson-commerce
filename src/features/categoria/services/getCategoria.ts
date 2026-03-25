@@ -1,4 +1,4 @@
-import { fetcher } from "@/lib/fetcher";
+import  fetcher  from "@/lib/fetcher";
 import { Categoria } from "../type";
 
 
