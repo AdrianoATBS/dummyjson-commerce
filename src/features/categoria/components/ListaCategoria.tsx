@@ -5,7 +5,7 @@ import { FreeMode } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/free-mode";
-
+import Link from "next/link";
 
 
 interface ListaCategoriaProps{
@@ -15,7 +15,7 @@ interface ListaCategoriaProps{
 export default function ListaCategoria({categorias}: ListaCategoriaProps) {
     return(
         <>
-            <section className="w-full h-auto flex flex-col items-center justify-center gap-4 pt-4 
+            <nav className="w-full h-auto flex flex-col items-center justify-center gap-4 pt-4 
             relative py-4 border-b border-borda">
                 
 
@@ -34,14 +34,14 @@ export default function ListaCategoria({categorias}: ListaCategoriaProps) {
                 spaceBetween={20}>
                     {categorias.map((categoria) => (
                         <SwiperSlide key={categoria.slug} style={{width: "auto"}}>
-                            <h2 className="h3 text-texto-secundario p-2 px-5 rounded-full hover:bg-fundo-secundario 
+                            <Link href={`/categoria/${categoria.slug}`} className="h3 text-texto-secundario p-2 px-5 rounded-full hover:bg-fundo-secundario 
                             hover:text-destaque-suave transition-all 
-                            duration-200 active:scale-95 cursor-pointer">{categoria.name}</h2>
+                            duration-200 active:scale-95 cursor-pointer">{categoria.name}</Link>
                         </SwiperSlide>
                     ))}
                 </Swiper>
 
-            </section>
+            </nav>
         </>
     )
 }
