@@ -17,10 +17,11 @@ export default function ProdutoDescricao({produto}: ProdutoDescricaoProps) {
             <h2 className="h2 flex">Descrição do produto</h2>
             <button onClick={handleToggleDescricao} 
             className="text-sm text-texto-secundario flex items-center gap-1 hover:text-cor-primaria
-            cursor-pointer transition-all duration-300 ease-in-out active:scale-95">
-                {abrirDescricao ? "Descrição ▼" : "Descrição ▲"}
+            cursor-pointer transition-all duration-300 overflow-hidden 
+            ease-in-out active:scale-95" aria-label={abrirDescricao ? "Fechar descrição" : "Abrir descrição"}>
+                {abrirDescricao ?  "Ocultar descrição" : "Mostrar descrição"} 
             </button>
-            {abrirDescricao && <p className="text-texto-secundario leading-relaxed">{produto.description}</p>}
+            {abrirDescricao && <p className="text-texto-secundario leading-relaxed ">{produto.description}</p>}
        
         </section> 
     )
