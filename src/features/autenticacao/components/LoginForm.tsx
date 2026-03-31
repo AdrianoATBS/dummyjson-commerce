@@ -3,7 +3,7 @@ import BotaoGenerico from "@/shared/components/BotaoGenerico";
 import InputGenerico from "@/shared/components/InputGenerico";
 import Link from "next/link";
 import { useState } from "react";
-import { loginUser } from "../services/loginUser";
+import { loginUser } from "../services/postLoginUser";
 import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
@@ -17,13 +17,17 @@ export default function LoginForm() {
         try{
             const autenticacao = await loginUser(userName, password);
             localStorage.setItem("autenticacao", JSON.stringify(autenticacao));
+
+            setUsername("");
+            setPassword("");
+
             router.push("/");
         }catch(error){
             console.error("Erro ao fazer login:", error);
 
         }finally{
-            setUsername("");
-            setPassword("");
+            console.log("Processo de login concluído.");
+            
         }
     }
 
@@ -61,6 +65,10 @@ export default function LoginForm() {
                     Não tem uma conta? <Link 
                     href="/register" className="text-lg text-cor-primaria hover:text-hover hover:underline">Cadastre-se</Link>
                 </p>
+
+                <Link href="/categoria/teste" className="text-lg text-cor-primaria hover:text-hover hover:underline">Teste de Rota Protegida
+                </Link>
+               
         </form>
     )
 }
