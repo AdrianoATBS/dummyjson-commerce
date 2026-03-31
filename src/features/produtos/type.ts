@@ -1,4 +1,3 @@
-
 export interface ProdutoResumo{
     id: number;
     title: string;
@@ -15,3 +14,4 @@ export interface ProdutoDetalhado extends ProdutoResumo{
     category: string;
     images: string[];
 }
+
