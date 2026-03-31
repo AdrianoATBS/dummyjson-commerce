@@ -4,6 +4,7 @@ import ProdutoDescricao from "@/features/produtos/components/ProdutoDescricao";
 import ProdutosRelacionados from "@/features/produtos/components/ProdutosRelacionados";
 import { getProdutosRelacionados } from "@/features/produtos/services/getProdutosRelacionados";
 import { embaralharProdutos } from "@/shared/utils/shuffleProdutos";
+import { notFound } from "next/navigation";
 
 type Props = {
    params: {id: string}
@@ -11,9 +12,13 @@ type Props = {
 
 export default async function ProdutoDetalhesPage({ params }: Props) {
 
-    const {id} = await params;
+    const {id} =  await params;
 
+    
     const produto = await getProduto(Number(id));
+    if(!produto){
+        notFound();
+    }
 
     const produtosRelacionados = await getProdutosRelacionados((produto.category));    
     
