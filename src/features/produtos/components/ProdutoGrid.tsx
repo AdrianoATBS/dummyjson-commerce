@@ -17,15 +17,16 @@ export default function ProdutoGrid(){
 
     useEffect(() => {
         const fetchProdutos = async () => {
-          try{
-            setCarregando(true);
-            const data = await getProdutosPaginacao(paginaAtual, TAMANHHO_DA_PAGINA);
-            setProdutos(data.products);
-            setTotalProdutos(data.total);
-          }
+            try{
+                setErro(null);
+                setCarregando(true);
+                const data = await getProdutosPaginacao(paginaAtual, TAMANHHO_DA_PAGINA);
+                setProdutos(data.products);
+                setTotalProdutos(data.total);
+            }
             catch(error){
                 setErro("Erro ao buscar produtos.");  
-             
+                
             }
             finally{
                 window.scrollTo({ top: 0, behavior: "smooth" });
@@ -36,17 +37,18 @@ export default function ProdutoGrid(){
         fetchProdutos();
     }, [paginaAtual]);
 
+    if(erro){
+        return <div className="flex items-center justify-center h-64">
+            <span className="text-lg text-red-500">{erro}</span>
+        </div>
+    }
+    
     if(carregando){
         return <div className="flex items-center justify-center h-64">
             <span className="text-lg text-texto-secundario">Carregando produtos...</span>
         </div>
     }
 
-    if(erro){
-        return <div className="flex items-center justify-center h-64">
-            <span className="text-lg text-red-500">{erro}</span>
-        </div>
-    }
   
     const totalPaginas = Math.ceil(totalProdutos / TAMANHHO_DA_PAGINA);
 
@@ -64,7 +66,7 @@ export default function ProdutoGrid(){
 
   return (
     <>
-      <section className="grid grid-cols-3 gap-4 pt-4 pb-4">
+      <section className="grid grid-cols-1 gap-4 pt-4 pb-4 sm:grid-cols-2 md:grid-cols-3">
         {produtos.map((produto) => (
             <Link href={`/produto/${produto.id}`} key={produto.id} 
                 className="w-full">
