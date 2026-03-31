@@ -10,13 +10,14 @@ interface CardProdutoDetalhadoProps {
 export default function CardProdutoDetalhado({ produto }: CardProdutoDetalhadoProps) {
 
     const precoFinal = produto.price * (1 - produto.discountPercentage / 100);
+
     return(
         <>
-        <section className="max-w-6xl mx-auto gap-5 p-4
-         bg-white rounded-lg shadow-md grid grid-cols-2">
+        <article className="max-w-6xl mx-auto gap-5 p-4
+         bg-white rounded-lg shadow-md grid grid-cols-1 md:grid-cols-2">
 
             <div className="flex justify-center items-center">
-                <Image src={produto.images[0] ?? produto.thumbnail} alt={produto.title} width={350} height={400} 
+                <Image src={produto.images?.[0] ?? produto.thumbnail} alt={produto.title} width={350} height={400} 
                 className="object-contain"/>
             </div>
 
@@ -31,7 +32,8 @@ export default function CardProdutoDetalhado({ produto }: CardProdutoDetalhadoPr
             {produto.discountPercentage > 0 ? (
                 <>
                 <p className="text-texto-secundario line-through">R$ {produto.price.toFixed(2)}</p>
-                <p className="destaque-preco">R$ {precoFinal.toFixed(2)}</p>
+                <p className="destaque-preco">R$ {precoFinal.toLocaleString('pt-BR', 
+                    {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
                 <p className="text-green-600 font-semibold">
                     {produto.discountPercentage}% de desconto
                 </p>
@@ -49,7 +51,7 @@ export default function CardProdutoDetalhado({ produto }: CardProdutoDetalhadoPr
 
             <p className="texto-secundario">Categoria: {produto.category}</p>
             </div>
-        </section>
+        </article>
         </>
     )
 }
