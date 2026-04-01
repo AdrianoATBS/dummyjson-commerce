@@ -4,5 +4,5 @@ import { Categoria } from "../type";
 
 
 export async  function getCategoria(): Promise<Categoria[]> {
-    return await fetcher("/products/categories")
+    return fetcher<Categoria[]>("/products/categories")
 }
