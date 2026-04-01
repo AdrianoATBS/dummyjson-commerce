@@ -15,3 +15,8 @@ export interface ProdutoDetalhado extends ProdutoResumo{
     images: string[];
 }
 
+export interface Pagination{
+    skip: number;
+    limit: number;
+    total: number;
+}
