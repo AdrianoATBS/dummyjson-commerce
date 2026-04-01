@@ -4,5 +4,5 @@ export default async function fetcher<T>(endpoint: string, options?: RequestInit
     if (!response.ok) {
         throw new Error(`Erro na requisição: ${response.status} ${response.statusText}`);
     }
-    return response.json();
+    return await response.json() as T;
 }
