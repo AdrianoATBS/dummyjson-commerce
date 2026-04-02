@@ -62,12 +62,15 @@ export default function LoginForm() {
                      hover:bg-cor-primaria hover:text-destaque-suave" />
                 
                 <p className="text-cor-primaria">
+                    
                     Não tem uma conta? <Link 
                     href="/register" className="text-lg text-cor-primaria hover:text-hover hover:underline">Cadastre-se</Link>
                 </p>
 
-                
-               
+                <div className=" w-full flex justify-start ">
+                    <Link className="text-lg text-cor-primaria active:scale-95 hover:text-hover"
+                    href={"/"}> ⬅ Voltar</Link>
+                </div>
         </form>
     )
 }
