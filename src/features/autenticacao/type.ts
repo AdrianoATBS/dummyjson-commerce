@@ -13,3 +13,11 @@ export interface AutenticacaoResumo{
     username: string;
     password: string;
 }
+
+
+export interface RegisterUsers{
+    id: number,
+    firstName: string,
+    lastName: string,
+    age: number,
+}
