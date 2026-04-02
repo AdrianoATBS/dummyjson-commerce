@@ -66,8 +66,7 @@ export default function LoginForm() {
                     href="/register" className="text-lg text-cor-primaria hover:text-hover hover:underline">Cadastre-se</Link>
                 </p>
 
-                <Link href="/categoria/teste" className="text-lg text-cor-primaria hover:text-hover hover:underline">Teste de Rota Protegida
-                </Link>
+                
                
         </form>
     )
