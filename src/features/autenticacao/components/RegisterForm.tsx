@@ -4,6 +4,7 @@ import InputGenerico from "@/shared/components/InputGenerico";
 import { useState } from "react";
 import { registerUser } from "../services/postRegisterUser";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 export  default function RegisterForm() {
 
     const router = useRouter();
@@ -61,8 +62,6 @@ export  default function RegisterForm() {
                 focus:outline-none focus:ring-2 focus:ring-cor-primaria" />
             </div>
 
-            
-            
             <div className="w-full flex flex-col gap-1">
                 <label className="self-start text-lg font-medium text-cor-primaria">Idade: </label>
                     <InputGenerico value={age} onChange={(e) => setAge(e.target.value)} type="text" placeholder="Digite sua idade"
@@ -75,6 +74,12 @@ export  default function RegisterForm() {
                  cursor-pointer active:scale-95
                  hover:bg-cor-primaria hover:text-destaque-suave" />
 
+          
+            <div className=" w-full flex justify-start ">
+                <Link className="text-lg text-cor-primaria active:scale-95 hover:text-hover"
+                href={"/login"}> ⬅ Voltar</Link>
+            </div>
+           
         </form>
     )
 }
