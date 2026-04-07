@@ -1,12 +1,16 @@
+"use client";
 import CardCarrinho from "@/features/carrinho/components/CardCarrinho";
-import getCarrinho from "@/features/carrinho/services/getCarrinho";
 
-export default async function Carrinho() {
-    const carrinhoAPI = await getCarrinho();
+import { useCarrinho } from "@/shared/hooks/useCarrinho";
+
+export default function Carrinho() {
+    const {carrinho} = useCarrinho();
+
+    
 
     return(
         <>
-            {carrinhoAPI.map((item) => {
+            {carrinho.map((item) => {
                 return <CardCarrinho key={item.id} carrinhoItem={item}/>
             })}
         </>
