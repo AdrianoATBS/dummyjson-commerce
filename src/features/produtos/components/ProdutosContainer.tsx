@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { ProdutoResumo } from "../type";
 import { getProdutosPaginacao } from "../services/getProdutosPaginacao";
 import ProdutoGrid from "./ProdutoGrid";
-
+import BotaoGenerico from "../../../shared/components/BotaoGenerico";
 
 export default function ProdutosContainer() {
    const [paginaAtual, setPaginaAtual] = useState(1);
@@ -67,7 +67,23 @@ export default function ProdutosContainer() {
     <>
       <ProdutoGrid products={produtos} />
 
-       
+       <div className="flex items-center justify-between pt-4 pb-2"> 
+        <BotaoGenerico texto="Anterior" onClick={handlePaginaAnterior} 
+            disabled={paginaAtual === 1} className="px-4 py-2 h3
+            text-white border border-borda bg-cor-primaria rounded-2xl
+            hover:bg-hover transition-all duration-300 ease-in-out 
+            active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed" /> 
+          
+            <span className="text-texto-secundario">Página 
+            <span className="text-destaque-suave">{paginaAtual}</span> de 
+            {totalPaginas}</span> 
+
+        <BotaoGenerico texto="Próxima" onClick={handlePaginaProxima} 
+            disabled={paginaAtual === totalPaginas} className="px-4 py-2 h3
+            text-white border border-borda bg-cor-primaria rounded-2xl
+            hover:bg-hover transition-all duration-300 ease-in-out active:scale-95 
+            active:shadow-sm disabled:opacity-50 disabled:cursor-not-allowed" /> 
+        </div>
    
     </>
   );
