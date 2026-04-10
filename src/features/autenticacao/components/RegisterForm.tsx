@@ -9,7 +9,6 @@ export  default function RegisterForm() {
 
     const router = useRouter();
 
-
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [age, setAge] = useState("");

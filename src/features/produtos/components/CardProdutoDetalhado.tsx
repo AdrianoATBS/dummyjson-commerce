@@ -13,6 +13,7 @@ export default function CardProdutoDetalhado({ produto }: CardProdutoDetalhadoPr
     const [estoque, setEstoque] = useState(produto.stock);
 
     const precoFinal = produto.price * (1 - produto.discountPercentage / 100);
+    
     const handleDiminuirEstoque = () => {
         if(estoque > 0){
             setEstoque(prevEstoque => prevEstoque - 1);

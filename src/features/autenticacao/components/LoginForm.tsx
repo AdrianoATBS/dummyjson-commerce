@@ -20,7 +20,7 @@ export default function LoginForm() {
 
             setUsername("");
             setPassword("");
-
+            
             router.push("/");
         }catch(error){
             console.error("Erro ao fazer login:", error);
