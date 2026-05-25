@@ -6,13 +6,15 @@ interface InputGenericoProps {
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     className?: string;
     name?: string;
+    id?: string;
 
 }
 
-export default function InputGenerico({ placeholder, value, onChange, type, className }: InputGenericoProps) {
+export default function InputGenerico({ placeholder, value, onChange, type, className, id }: InputGenericoProps) {
     return(
         <>
-            <input type={type || "text"} placeholder={placeholder} value={value} onChange={onChange} className={className} />
+            <input type={type || "text"} 
+            placeholder={placeholder} value={value} onChange={onChange} className={className} id={id} />
         </>
     )
 }
