@@ -7,7 +7,7 @@ export default function Footer() {
         <footer className="w-full border-t border-borda bg-fundo-secundario">
             <div className="max-w-6xl mx-auto px-4 py-5 flex flex-col items-center gap-3">
 
-                <Image src="/logoF.png" alt="Logo" width={58} height={40} />
+                <Image src="/logoF.png" alt="Logo" width={58} height={58} />
    
                 <div className="flex flex-col items-center gap-3">
                     <h2 className="h2 text-center py-4 text-cor-primaria">

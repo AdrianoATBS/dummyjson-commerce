@@ -75,8 +75,7 @@ export default function ProdutosContainer() {
             active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed" /> 
           
             <span className="text-texto-secundario">Página 
-            <span className="text-destaque-suave">{paginaAtual}</span> de 
-            {totalPaginas}</span> 
+            <span className="text-destaque-suave"> {paginaAtual}</span> de {totalPaginas}</span> 
 
         <BotaoGenerico texto="Próxima" onClick={handlePaginaProxima} 
             disabled={paginaAtual === totalPaginas} className="px-4 py-2 h3

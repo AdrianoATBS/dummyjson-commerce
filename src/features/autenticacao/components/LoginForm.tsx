@@ -43,7 +43,8 @@ export default function LoginForm() {
 
 
     return(
-        <section className="w-full max-w-4xl mx-auto overflow-hidden rounded-2xl md:grid md:grid-cols-2 " >
+        <section className="w-full max-w-4xl mx-auto 
+        overflow-hidden rounded-2xl md:grid md:grid-cols-2 " >
 
            <div className="relative hidden md:block w-full h-full min-h-[550] ">
                 
@@ -54,6 +55,7 @@ export default function LoginForm() {
                     />
                
             </div>
+
             <form onSubmit={handleSubmit} className="w-full max-w-md flex flex-col gap-6 p-8 
             border border-borda shadow-lg  rounded-br-2xl rounded-tr-2xl">
                     <div className="flex flex-col justify-end items-start gap-2">
@@ -129,7 +131,7 @@ export default function LoginForm() {
                         Não tem uma conta? 
                         <Link 
                         href="/register" className="text-sm
-                         text-cor-primaria hover:text-hover hover:underline">Cadastre-se</Link>
+                         text-cor-primaria hover:text-hover hover:underline"> Cadastre-se</Link>
                     </p>
 
                     <div className="w-full flex justify-between items-center

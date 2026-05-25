@@ -10,7 +10,8 @@ export default function Header() {
 
                 <div className="flex items-center gap-8 cursor-pointer">
                     <Link href="/">
-                     <Image src="/logoH.png" alt="Logo" width={58} height={40} />
+                     <Image src="/logoH.png" alt="Logo" width={58} height={58} 
+                      />
                     </Link>
                 </div>
                 
