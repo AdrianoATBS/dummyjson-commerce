@@ -5,9 +5,10 @@ import { ProdutoResumo } from "../type";
 import { getProdutosPaginacao } from "../services/getProdutosPaginacao";
 import ProdutoGrid from "./ProdutoGrid";
 import BotaoGenerico from "../../../shared/components/BotaoGenerico";
+import ProdutoTopo from "./ProdutoTopo";
 
 export default function ProdutosContainer() {
-   const [paginaAtual, setPaginaAtual] = useState(1);
+    const [paginaAtual, setPaginaAtual] = useState(1);
     const [produtos, setProdutos] = useState<ProdutoResumo[]>([]);
     const [totalProdutos, setTotalProdutos] = useState(0);
     const [carregando, setCarregando] = useState(false);
@@ -64,9 +65,10 @@ export default function ProdutosContainer() {
     };
 
   return (
-    <>
-      <ProdutoGrid products={produtos} />
-
+    <section className="w-full max-w-7xl mx-auto px-5 py-8">
+        <ProdutoTopo produto={produtos} />
+        <ProdutoGrid products={produtos} />
+        
        <div className="flex items-center justify-between pt-4 pb-2"> 
         <BotaoGenerico texto="Anterior" onClick={handlePaginaAnterior} 
             disabled={paginaAtual === 1} className="px-4 py-2 h3
@@ -84,6 +86,6 @@ export default function ProdutosContainer() {
             active:shadow-sm disabled:opacity-50 disabled:cursor-not-allowed" /> 
         </div>
    
-    </>
+    </section>
   );
 }
