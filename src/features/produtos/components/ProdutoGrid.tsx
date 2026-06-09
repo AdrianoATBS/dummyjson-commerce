@@ -2,8 +2,10 @@
 import { ProdutoResumo } from "../type";
 import CardProdutos from "./CardProdutos";
 import Link from "next/link";
+import { ProdutoDetalhado } from "../type";
 interface ProdutoGridProps {
-    products: ProdutoResumo[];
+    products: ProdutoDetalhado[];
+   
 }
 
 export default function ProdutoGrid({ products }: ProdutoGridProps){ 

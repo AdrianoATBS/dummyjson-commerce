@@ -1,9 +1,12 @@
 import fetcher  from "@/lib/fetcher";
-import { ProdutoResumo } from "../type";
+
+import { ProdutoDetalhado } from "../type";
 import { Pagination } from "../type";
 interface ProdutoResponse extends Pagination {
-    products: ProdutoResumo[];
-   
+    products: ProdutoDetalhado[];
+    total: number;
+    skip: number;
+    limit: number;
 }
 
 export async function getProdutosPaginacao(pagina: number, limite: number): Promise<ProdutoResponse> {

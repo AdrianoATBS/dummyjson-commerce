@@ -1,22 +1,23 @@
 "use client";
 import { useState, useEffect } from "react";
-import { ProdutoResumo } from "../type";
 import { getProdutosPaginacao } from "../services/getProdutosPaginacao";
 import ProdutoGrid from "./ProdutoGrid";
 import BotaoGenerico from "../../../shared/components/BotaoGenerico";
 import ProdutoTopo from "./ProdutoTopo";
 import ListaCategoria from "@/features/categoria/components/ListaCategoria";
 import { Categoria } from "@/features/categoria/type";
+import { ProdutoDetalhado } from "../type";
 interface ProdutosContainerProps {
     categorias: Categoria[]
 }
 export default function ProdutosContainer({categorias}: ProdutosContainerProps) {
     const [paginaAtual, setPaginaAtual] = useState(1);
-    const [produtos, setProdutos] = useState<ProdutoResumo[]>([]);
+    const [produtos, setProdutos] = useState<ProdutoDetalhado[]>([]);
     const [totalProdutos, setTotalProdutos] = useState(0);
     const [carregando, setCarregando] = useState(false);
     const [erro, setErro] = useState<string | null>(null);
     const TAMANHHO_DA_PAGINA = 9;
+    
 
     useEffect(() => {
         const fetchProdutos = async () => {

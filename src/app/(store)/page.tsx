@@ -1,4 +1,3 @@
-import ListaCategoria from "@/features/categoria/components/ListaCategoria";
 import { getCategoria } from "@/features/categoria/services/getCategoria";
 import ProdutosContainer from "@/features/produtos/components/ProdutosContainer";
 
