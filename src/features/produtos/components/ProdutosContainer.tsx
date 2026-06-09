@@ -1,13 +1,16 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { ProdutoResumo } from "../type";
 import { getProdutosPaginacao } from "../services/getProdutosPaginacao";
 import ProdutoGrid from "./ProdutoGrid";
 import BotaoGenerico from "../../../shared/components/BotaoGenerico";
 import ProdutoTopo from "./ProdutoTopo";
-
-export default function ProdutosContainer() {
+import ListaCategoria from "@/features/categoria/components/ListaCategoria";
+import { Categoria } from "@/features/categoria/type";
+interface ProdutosContainerProps {
+    categorias: Categoria[]
+}
+export default function ProdutosContainer({categorias}: ProdutosContainerProps) {
     const [paginaAtual, setPaginaAtual] = useState(1);
     const [produtos, setProdutos] = useState<ProdutoResumo[]>([]);
     const [totalProdutos, setTotalProdutos] = useState(0);
@@ -67,6 +70,8 @@ export default function ProdutosContainer() {
   return (
     <section className="w-full max-w-7xl mx-auto px-5 py-8">
         <ProdutoTopo produto={produtos} />
+        <ListaCategoria categorias={categorias} />
+        
         <ProdutoGrid products={produtos} />
         
        <div className="flex items-center justify-between pt-4 pb-2"> 

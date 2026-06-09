@@ -15,8 +15,8 @@ interface ListaCategoriaProps{
 export default function ListaCategoria({categorias}: ListaCategoriaProps) {
     return(
         <>
-            <nav className="w-full h-auto flex flex-col items-center justify-center gap-4 pt-4 
-            relative py-4 border-b border-borda">
+            <nav className="w-full max-w-xl h-auto flex flex-col items-center justify-center gap-4 pt-4 
+            relative py-4 ">
                 
 
                 <div className="pointer-events-none absolute left-0 top-0 h-full w-16
@@ -34,9 +34,11 @@ export default function ListaCategoria({categorias}: ListaCategoriaProps) {
                 spaceBetween={20}>
                     {categorias.map((categoria) => (
                         <SwiperSlide key={categoria.slug} style={{width: "auto"}}>
-                            <Link href={`/categoria/${categoria.slug}`} className="h3 text-texto-secundario p-2 px-5 rounded-full hover:bg-fundo-secundario 
-                            hover:text-destaque-suave transition-all 
-                            duration-200 active:scale-95 cursor-pointer">{categoria.name}</Link>
+                            <Link href={`/categoria/${categoria.slug}`} className="
+                            h3 inline-block text-fundo-secundario bg-violet-600
+                             hover:bg-violet-700 py-[0.4rem] px-5 
+                             rounded-full transition-all duration-200 
+                             active:scale-95 cursor-pointerr">{categoria.name}</Link>
                         </SwiperSlide>
                     ))}
                 </Swiper>
