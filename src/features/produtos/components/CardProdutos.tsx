@@ -15,7 +15,7 @@ export default function CardProdutos({ produto }: CardProdutosProps){
     return(
     
         <article className="flex flex-col justify-center items-center 
-        rounded-lg p-4  cursor-pointer w-full h-full">
+        rounded-lg p-4 w-full h-full hover:scale-105">
             
             <div className="flex flex-col w-72 h-72 items-center gap-2 bg-black  p-4
             overflow-hidden relative rounded-tl-2xl rounded-tr-2xl">
@@ -44,8 +44,8 @@ export default function CardProdutos({ produto }: CardProdutosProps){
                     )}
                         
                     <div className="flex justify-center items-center gap-2 absolute top-33 right-5 
-                    bg-[#EDE5F4] p-3 rounded-full cursor-pointer ">
-                        <button>
+                    bg-[#EDE5F4] p-3 rounded-full   ">
+                        <button className="cursor-pointer">
                             <FaPlus className="text-black" />
                         </button>
                     </div>
