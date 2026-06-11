@@ -55,18 +55,7 @@ export default function ProdutosContainer({categorias}: ProdutosContainerProps) 
 
   
     const totalPaginas = Math.ceil(totalProdutos / TAMANHHO_DA_PAGINA);
-
-    const handlePaginaAnterior = () => {
-        if(paginaAtual > 1){
-            setPaginaAtual(paginaAtual - 1);
-        }
-    };
-
-    const handlePaginaProxima = () => {
-        if(paginaAtual < totalPaginas){
-            setPaginaAtual(paginaAtual + 1);
-        }
-    };
+   
 
   return (
     <section className="w-full max-w-7xl mx-auto px-5 py-8">
@@ -75,23 +64,33 @@ export default function ProdutosContainer({categorias}: ProdutosContainerProps) 
         
         <ProdutoGrid products={produtos} />
         
-       <div className="flex items-center justify-between pt-4 pb-2"> 
-        <BotaoGenerico texto="Anterior" onClick={handlePaginaAnterior} 
-            disabled={paginaAtual === 1} className="px-4 py-2 h3
-            text-white border border-borda bg-cor-primaria rounded-2xl
-            hover:bg-hover transition-all duration-300 ease-in-out 
-            active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed" /> 
-          
-            <span className="text-texto-secundario">Página 
-            <span className="text-destaque-suave"> {paginaAtual}</span> de {totalPaginas}</span> 
-
-        <BotaoGenerico texto="Próxima" onClick={handlePaginaProxima} 
-            disabled={paginaAtual === totalPaginas} className="px-4 py-2 h3
-            text-white border border-borda bg-cor-primaria rounded-2xl
-            hover:bg-hover transition-all duration-300 ease-in-out active:scale-95 
-            active:shadow-sm disabled:opacity-50 disabled:cursor-not-allowed" /> 
+       
+        {totalPaginas > 1 && (
+        <div className="flex items-center justify-center gap-2 mt-4">
+            {Array.from({ length: totalPaginas}, (_, index) => {
+                const pagina = index + 1;
+                const ehPrimeiraOuUltima = pagina === 1 || pagina === totalPaginas;
+                const ehVizinha = Math.abs(pagina - paginaAtual) <= 1;
+                if(ehPrimeiraOuUltima || ehVizinha){
+                    return(
+                        <button key={index} onClick={() => setPaginaAtual(pagina)}
+                        className={`px-3 py-1 rounded-full cursor-pointer
+                        ${paginaAtual === pagina ? "bg-cor-primaria text-white" : 
+                        "text-gray-700 hover:bg-gray-300"}`}>
+                            {pagina}
+                        </button>
+                    );
+                }
+                if(pagina === 2 && paginaAtual > 3){
+                    return <span key="reticencias-inicio" className="px-3 py-1">...</span>
+                }
+                if(pagina === totalPaginas - 1 && paginaAtual < totalPaginas - 3){
+                    return <span key="reticencias-fim" className="px-3 py-1">...</span>
+                }
+                return null;
+            })}
         </div>
-   
+        )}
     </section>
   );
 }
