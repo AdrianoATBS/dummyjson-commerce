@@ -1,5 +1,5 @@
 interface BotaoGenericoProps{
-    texto: string;
+    texto: React.ReactNode;
     onClick?: () => void;
     className?: string;
     disabled?: boolean;
