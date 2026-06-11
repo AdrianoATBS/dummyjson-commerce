@@ -7,6 +7,9 @@ import ProdutoTopo from "./ProdutoTopo";
 import ListaCategoria from "@/features/categoria/components/ListaCategoria";
 import { Categoria } from "@/features/categoria/type";
 import { ProdutoDetalhado } from "../type";
+import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
+
 interface ProdutosContainerProps {
     categorias: Categoria[]
 }
@@ -62,11 +65,16 @@ export default function ProdutosContainer({categorias}: ProdutosContainerProps) 
         <ProdutoTopo produto={produtos} />
         <ListaCategoria categorias={categorias} />
         
-        <ProdutoGrid products={produtos} />
+        <ProdutoGrid products={produtos} produtoDestaque={produtos[0]} paginaAtual={paginaAtual} />
         
        
         {totalPaginas > 1 && (
+    
         <div className="flex items-center justify-center gap-2 mt-4">
+            <BotaoGenerico texto={<IoIosArrowBack />} onClick={() => setPaginaAtual((prev) => Math.max(prev - 1, 1))}
+            className={`px-3 py-1 text-[#4A4455] ${paginaAtual === 1 ?
+             "opacity-50 cursor-not-allowed" : "cursor-pointer hover:text-cor-primaria"}`} />
+            
             {Array.from({ length: totalPaginas}, (_, index) => {
                 const pagina = index + 1;
                 const ehPrimeiraOuUltima = pagina === 1 || pagina === totalPaginas;
@@ -89,7 +97,12 @@ export default function ProdutosContainer({categorias}: ProdutosContainerProps) 
                 }
                 return null;
             })}
+            <BotaoGenerico texto={<IoIosArrowForward />} onClick={() => setPaginaAtual((prev) => 
+            Math.min(prev + 1, totalPaginas))}
+            className={`px-3 py-1 text-[#4A4455] ${paginaAtual === totalPaginas ?
+             "opacity-50 cursor-not-allowed" : "cursor-pointer hover:text-cor-primaria"}`} />
         </div>
+    
         )}
     </section>
   );
