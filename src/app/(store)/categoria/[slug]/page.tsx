@@ -1,18 +1,15 @@
-import ListaCategoria from "@/features/categoria/components/ListaCategoria";
-import { getCategoria } from "@/features/categoria/services/getCategoria";
-import ProdutoGrid from "@/features/produtos/components/ProdutoGrid";
 import getProdutosPorCategoria from "@/features/categoria/services/getProdutosPorCategoria";
-
+import ProdutoCategoriaGrid from "@/features/produtos/components/ProdutoCategoriaGrid";
+import ProdutoCategoriaBanner from "@/features/produtos/components/ProdutoCategoriaBanner";
 export default async function Categoria({params}: {params: {slug: string}}) {
     const slug = await params;
-    const categoria = await getCategoria();
-    
+
     const produtos = await getProdutosPorCategoria(slug.slug);
 
     return(
-       <>
-            <ListaCategoria categorias={categoria} />
-            <ProdutoGrid products={produtos} />
-       </>
+       <main className="w-full min-h-screen p-4">
+            <ProdutoCategoriaBanner  />
+            <ProdutoCategoriaGrid products={produtos} />
+       </main>
     )
 }

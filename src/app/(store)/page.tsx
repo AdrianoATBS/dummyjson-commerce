@@ -8,7 +8,6 @@ export default async function Home() {
   return (
       <main className="w-full max-w-7xl mx-auto px-5 ">
         <ProdutosContainer categorias={categorias} />
-        
        
       </main>
 
