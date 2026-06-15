@@ -1,7 +1,8 @@
 import fetcher from "@/lib/fetcher";
 import { ProdutoResumo } from "@/features/produtos/type";
+import { ProdutoDetalhado } from "@/features/produtos/type";
 interface ProdutosCategoriaAPIResponse {
-    products: ProdutoResumo[];
+    products: ProdutoDetalhado[];
 }
 
 export default async function getProdutosPorCategoria(slug: string){
