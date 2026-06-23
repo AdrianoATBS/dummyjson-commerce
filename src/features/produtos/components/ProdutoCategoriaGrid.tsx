@@ -26,7 +26,7 @@ export default function ProdutoCategoriaGrid({ products }: ProdutoCategoriaGridP
     
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
-    }, [produtosExibidos]);
+    }, [paginaAtual]);
 
     return(
 
@@ -40,7 +40,8 @@ export default function ProdutoCategoriaGrid({ products }: ProdutoCategoriaGridP
                      border-transparent focus-within:border-purple-300 transition lg:">
                         <span>Min:</span>
                         <input type="number" placeholder="$5"
-                        className="w-full bg-transparent text-sm text-gray-800 outline-none [appearance:textfield] 
+                        className="w-full bg-transparent text-sm text-gray-800 outline-none 
+                        [appearance:textfield] 
                         [&::-webkit-outer-spin-button]:appearance-none 
                         [&::-webkit-inner-spin-button]:appearance-none" />
                     </label>
@@ -115,7 +116,7 @@ export default function ProdutoCategoriaGrid({ products }: ProdutoCategoriaGridP
                         "opacity-50 cursor-not-allowed" : "cursor-pointer hover:text-cor-primaria"}`} />
                 </div>
             )}
-                </div>
+        </div>
 
         </section>
     )
