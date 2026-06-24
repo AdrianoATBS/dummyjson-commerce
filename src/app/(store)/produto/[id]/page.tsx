@@ -31,7 +31,6 @@ export default async function ProdutoDetalhesPage({ params }: Props) {
     return(
         <main className="max-w-full mx-auto py-8 px-5">
             <CardProdutoDetalhado produto={produto} />
-            <ProdutoDescricao produto={produto} />
             <ProdutosRelacionados produtos={produtosAleatorios}/>
         </main>
     )

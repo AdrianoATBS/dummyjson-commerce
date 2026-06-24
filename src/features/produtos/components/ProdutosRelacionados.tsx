@@ -1,8 +1,8 @@
 import CardProdutos from "./CardProdutos";
-import { ProdutoResumo } from "../type";
+import { ProdutoDetalhado, ProdutoResumo } from "../type";
 import Link from "next/link";
 interface ProdutosRelacionadosProps {
-    produtos: ProdutoResumo[];
+    produtos: ProdutoDetalhado[] | ProdutoResumo[];
 }
 export default function ProdutosRelacionados({ produtos}: 
     ProdutosRelacionadosProps) {

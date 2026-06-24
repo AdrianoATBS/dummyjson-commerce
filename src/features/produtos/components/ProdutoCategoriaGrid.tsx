@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import BotaoGenerico from "@/shared/components/BotaoGenerico";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
-import { getProdutosPaginacao } from "../services/getProdutosPaginacao";
+
 interface ProdutoCategoriaGridProps {
     products: ProdutoDetalhado[];
 }
@@ -107,8 +107,10 @@ export default function ProdutoCategoriaGrid({ products }: ProdutoCategoriaGridP
                         }
                         if(pagina === totalPaginas - 1 && paginaAtual < totalPaginas - 3){
                             return <span key="reticencias-fim" className="px-3 py-1">...</span>
+
                         }
-                        return null;
+                        return null
+                      
                     })}
                     <BotaoGenerico texto={<IoIosArrowForward />} onClick={() => setPaginaAtual((prev) => 
                     Math.min(prev + 1, totalPaginas))}
@@ -122,3 +124,4 @@ export default function ProdutoCategoriaGrid({ products }: ProdutoCategoriaGridP
     )
 }
             
+
