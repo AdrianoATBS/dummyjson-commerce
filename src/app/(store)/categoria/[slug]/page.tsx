@@ -9,7 +9,7 @@ export default async function Categoria({params}: {params: {slug: string}}) {
     return(
        <main className="w-full min-h-screen p-4">
             <ProdutoCategoriaBanner  />
-            <ProdutoCategoriaGrid products={produtos} />
+            <ProdutoCategoriaGrid produtos={produtos} />
        </main>
     )
 }

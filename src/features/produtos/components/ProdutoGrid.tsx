@@ -26,7 +26,7 @@ export default function ProdutoGrid({ products, produtoDestaque, paginaAtual }: 
         )}
         {produtosExibidos.map((produto) => (
             <Link href={`/produto/${produto.id}`} key={produto.id}>
-            <CardProdutos produto={produto} />
+              <CardProdutos produto={produto} />
             </Link>
         ))}
     </div>

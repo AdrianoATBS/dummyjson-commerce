@@ -8,21 +8,21 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 
 interface ProdutoCategoriaGridProps {
-    products: ProdutoDetalhado[];
+    produtos: ProdutoDetalhado[];
 }
-export default function ProdutoCategoriaGrid({ products }: ProdutoCategoriaGridProps) {
+export default function ProdutoCategoriaGrid({ produtos }: ProdutoCategoriaGridProps) {
     const [avaliacao, setAvaliacao] = useState<number>(3);
     const [avalicaoFlutuante, setAvaliacaoFlutuante] = useState<number |null>(null);
     
     const [paginaAtual, setPaginaAtual] = useState(1);
     const produtosPorPagina = 8;
-    const totalPaginas = Math.ceil(products.length / produtosPorPagina);
+    const totalPaginas = Math.ceil(produtos.length / produtosPorPagina);
     
-    const categoriaQuantidade = products.length;
+    const categoriaQuantidade = produtos.length;
   
     
-    const produtosExibidos = paginaAtual === 1 ? products.slice(0, produtosPorPagina) : 
-    products.slice((paginaAtual - 1) * produtosPorPagina, paginaAtual * produtosPorPagina);
+    const produtosExibidos = paginaAtual === 1 ? produtos.slice(0, produtosPorPagina) : 
+    produtos.slice((paginaAtual - 1) * produtosPorPagina, paginaAtual * produtosPorPagina);
     
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });

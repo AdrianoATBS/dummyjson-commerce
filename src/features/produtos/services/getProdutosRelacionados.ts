@@ -1,10 +1,10 @@
 import  fetcher  from "../../../lib/fetcher";
-import { ProdutoResumo } from "../type";
+import { ProdutoResumo, ProdutoDetalhado} from "../type";
 interface ProdutosRelacionadosResponse {
-    products: ProdutoResumo[];
+    products: ProdutoDetalhado[];
 }
 
-export async function getProdutosRelacionados(categoria: string): Promise<ProdutoResumo[]> {
+export async function getProdutosRelacionados(categoria: string): Promise<ProdutoDetalhado[]> {
     const data = await fetcher<ProdutosRelacionadosResponse>
     (`/products/category/${encodeURIComponent(categoria)}`);
     

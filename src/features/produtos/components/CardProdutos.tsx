@@ -1,10 +1,10 @@
-import { ProdutoDetalhado } from "../type"
+import { ProdutoDetalhado, ProdutoResumo } from "../type"
 import Image from "next/image";
 import { FaStar } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
 
 interface CardProdutosProps {
-    produto: ProdutoDetalhado;
+    produto: ProdutoDetalhado ; 
    
 }
 

@@ -26,12 +26,12 @@ export default async function ProdutoDetalhesPage({ params }: Props) {
     const produtosAleatorios = embaralharProdutos(produtosRelacionados).filter(
         (produtoIguais) => produtoIguais.id !== produto.id
     ).slice(0, 6);
-    
+
     
     return(
         <main className="max-w-full mx-auto py-8 px-5">
             <CardProdutoDetalhado produto={produto} />
-            <ProdutosRelacionados produtos={produtosAleatorios}/>
+            <ProdutosRelacionados produtos={produtosAleatorios } categoria={produto.category}/>
         </main>
     )
 }

@@ -59,9 +59,15 @@ export default function CardProdutoDetalhado({ produto }: CardProdutoDetalhadoPr
             </div>
 
             <div className="flex flex-col gap-4">
-                
-            <p className="text-cor-primaria text-sm font-light tracking-widest ">{produto.brand} / {produto.category}</p>
+            {produto.brand ?(
+                <p className="text-cor-primaria text-sm font-light tracking-widest ">{produto.brand} / {produto.category}</p>
+
+            ) : (
+                <p className="text-cor-primaria text-sm font-light tracking-widest ">{produto.category}</p>
+            )}
+            
             <h2 className="h1">{produto.title}</h2>
+            
             <div className="flex items-center gap-1">
                 <span className="ml-1 text-yellow-400 "> <GoStarFill /> </span>
                 <p className="text-texto-secundario text-xs">
