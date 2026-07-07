@@ -3,12 +3,18 @@ import BotaoGenerico from "@/shared/components/BotaoGenerico";
 import Image from "next/image";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { useCarrinho } from "@/shared/hooks/useCarrinho";
+import { useState } from "react";
+import { FaPlus } from "react-icons/fa6";
+import { FaMinus } from "react-icons/fa6";
 import Link from "next/link";
 interface CardCarrinhoProps {
     carrinhoItem: CarrinhoItem;
+    
 }
 export default function CardCarrinho({ carrinhoItem }: CardCarrinhoProps){
     const { removerDoCarrinho } = useCarrinho();
+    const [carrinho, setCarrinho] = useState();
+
 
     const precoTotal = carrinhoItem.price * carrinhoItem.quantity;
 
@@ -17,12 +23,21 @@ export default function CardCarrinho({ carrinhoItem }: CardCarrinhoProps){
             carrinhoItem.id
         )
     }
+    const handleIncrementarQuantidade = ( ) => {
+       setCarrinho(() => {
+
+       }) 
+    }
+    const handleDecrementarQuantidade = () => {
+        setCarrinho(() => {})
+    }
+
 
     return(
         <>
         
         <section className="flex gap-6 p-4 mb-4 rounded-xl shadow-md border border-borda ">
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
                <Link href={`/produto/${carrinhoItem.id}`}>
                     <Image src=
                     {carrinhoItem.thumbnail} 
@@ -32,29 +47,34 @@ export default function CardCarrinho({ carrinhoItem }: CardCarrinhoProps){
                 </Link>
             </div>
 
-            <div className="flex flex-col justify-between w-full">
-                <div className="flex flex-col gap-2">
-                    <h2 className="h2">{carrinhoItem.title}</h2>
-                    <p className="destaque-preco">Preço: R${carrinhoItem.price.toLocaleString('pt-BR',
-                        {minimumFractionDigits: 2, maximumFractionDigits: 2}
-                    )}</p>
-                    <p className="texto-secundario">Quantidade: {carrinhoItem.quantity}</p>
-                    <p className="destaque-preco">Total: R${precoTotal.toLocaleString('pt-BR', {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2
-                    })}</p>
-                </div>
-                
-                <div className="flex items-center justify-between mt-4">
-                    <RiDeleteBin5Fill className="cursor-pointer fill-cor-primaria active:scale-110 transition" onClick={handleRemoverDoCarrinho}/>
-                    <BotaoGenerico texto="Comprar" 
-                    className="border border-cor-primaria rounded-lg text-cor-primaria px-4 py-2
-                    cursor-pointer hover:bg-cor-primaria hover:text-white active:scale-95"/>
+            <div className="flex justify-between w-full items-start">
+                <div className="flex flex-col  gap-2 ">
+                    <h2 className="h2 text-left">{carrinhoItem.title}</h2>
 
-                </div>
+                    <div className="flex items-center gap-2 bg-[#EDE5F4] rounded-full px-2 py-1 mt-2 w-fit">
+                        <button onClick={handleDecrementarQuantidade} className="p-2 ">
+                            <FaMinus className="text-[#1D1A24]" />
+                        </button>
+
+                        <p className="text-[#1D1A24]">{carrinhoItem.quantity}</p>
+
+                        <button onClick={handleIncrementarQuantidade} className="p-2 ">
+                            <FaPlus className="text-[#1D1A24]" />
+                        </button>
+                    </div>
+                </div>    
+                <div className="flex flex-col items-end justify-between h-full gap-4  mt-4">
+                    <RiDeleteBin5Fill className="cursor-pointer fill-[#7B7487] active:scale-110 transition" 
+                    onClick={handleRemoverDoCarrinho}/>
+                    <div className="text-end mt-auto">
+
+                        <h3 className="text-xs text-[#4A4455]">SUBTOTAL</h3>
+                        <p className="text-lg  text-cor-primaria">R$ {precoTotal.toFixed(2)}</p>
+                    </div>
                 
-            </div>
-           
+                </div>
+            </div>  
+              
         </section>
 
         </>

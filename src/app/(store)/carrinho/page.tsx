@@ -5,9 +5,8 @@ import { useCarrinho } from "@/shared/hooks/useCarrinho";
 
 export default function Carrinho() {
     const {carrinho} = useCarrinho();
-
     
-
+    
     return(
         <>
             {carrinho.map((item) => {
