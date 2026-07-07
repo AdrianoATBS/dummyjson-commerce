@@ -6,7 +6,7 @@ interface BotaoGenericoProps{
     type?: "button" | "submit" | "reset";
 }
 
-export default function BotaoGenerico({texto, onClick, className, disabled, type } : BotaoGenericoProps )
+export default function BotaoGenerico({texto, onClick, className, disabled, type} : BotaoGenericoProps )
 {
     return(
         <button className={className} onClick={onClick} disabled={disabled} type={type}>
