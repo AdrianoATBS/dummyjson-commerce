@@ -15,15 +15,7 @@ export default function Header() {
                     </Link>
                 </div>
                 
-                <div className="relative w-full max-w-56 mr-5">
-                    <input 
-                    className="w-full h-7 p-4 pl-3 pr-10 rounded-full border border-borda texto-secundario
-                    focus:outline-none bg-texto-secundario/25 " 
-                    type="text" placeholder="Buscar produtos..." />
-
-                    <CiSearch className="absolute right-3 top-1/2 transform -translate-y-1/2
-                     text-[#1D1A24] cursor-pointer" />    
-                </div>
+                
 
                 <div className="flex items-center gap-6 pr-6">
 
