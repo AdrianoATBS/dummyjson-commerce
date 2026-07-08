@@ -53,10 +53,10 @@ export  default function RegisterForm() {
     return(
         <section className="w-full max-w-4xl mx-auto 
         overflow-hidden rounded-2xl md:grid md:grid-cols-2 " >
-            <div className=" w-full h-full 
+            <div className="w-full h-full 
              " >
-               <div className="bg-linear-to-br from-[#630ED4] via-[#630ED4]/90 to-cor-primaria/80 w-full rounded-tl-2xl h-[380] flex-col
-                items-start justify-start p-8 gap-3  relative hidden md:flex ">
+               <div className="bg-linear-to-br from-[#630ED4] via-[#630ED4]/90 to-cor-primaria/80 w-full rounded-bl-2xl h-[450] flex-col
+                items-start justify-start p-8 gap-3  relative hidden md:flex  ">
                     <h2 className="h2 text-[#EDE0FF]">Viora</h2>
                     <h3 className="h1 text-[#EDE0FF]">Bem-vindo!</h3>
                     <p className="text-[#EDE0FF]">   
@@ -66,11 +66,11 @@ export  default function RegisterForm() {
                     <Image src="/Container.png" 
                     alt="Imagem de Registro" width={400} height={300} 
                     />
-                    <p className="text-[#EDE0FF]">
+                    <p className="text-[#EDE0FF] mt-4">
                         Junte-se a mais de 12.000 curadores do mundo todo.
                     </p>
                </div>
-               <div className="bg-[#F9F1FF] h-full w-full rounded-bl-2xl"></div>
+                
             </div>
 
             <form onSubmit={handleSubmit}
@@ -85,7 +85,7 @@ export  default function RegisterForm() {
                 </p>
 
                 <div className="w-full flex flex-col gap-1 relative">
-                <label className="self-start text-lg font-medium text-cor-primaria">Nome Todo: </label>
+                <label className="self-start text-lg font-medium text-cor-primaria">Nome Completo: </label>
                     
                     <FaRegUser className="absolute top-9 left-0 -translate-x-2/5 -translate-y-1/12
                     text-texto-secundario w-4 h-4 ml-3 mt-[0.6rem] pointer-events-none" />
