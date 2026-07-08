@@ -85,7 +85,7 @@ export default function CardProdutoDetalhado({ produto }: CardProdutoDetalhadoPr
                     </div>
 
                     <p className="text-[#7D3D00] ">
-                        {produto.discountPercentage}% de desconto
+                        {produto.discountPercentage.toFixed(0)}% de desconto
                     </p>
                 </div>
                 ) : (
