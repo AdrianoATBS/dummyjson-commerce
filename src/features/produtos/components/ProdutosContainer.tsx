@@ -63,7 +63,10 @@ export default function ProdutosContainer({categorias}: ProdutosContainerProps) 
   return (
     <section className="w-full max-w-7xl mx-auto px-5 py-8">
         <ProdutoTopo produto={produtos} />
-        <ListaCategoria categorias={categorias} />
+        <div className="flex items-center justify-center gap-4 mt-8">
+
+            <ListaCategoria categorias={categorias} />
+        </div>
         
         <ProdutoGrid products={produtos} produtoDestaque={produtos[0]} paginaAtual={paginaAtual} />
         
