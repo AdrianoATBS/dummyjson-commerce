@@ -1,13 +1,15 @@
 "use client";
 import { CarrinhoItem } from "@/features/carrinho/type";
 import BotaoGenerico from "@/shared/components/BotaoGenerico";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 interface CardTotalProps {
     carrinho: CarrinhoItem[];
+    limparCarrinho: () => void;
+   
 }
 
-export default function CardTotal({ carrinho }: CardTotalProps  ){
+export default function CardTotal({ carrinho, limparCarrinho }: CardTotalProps  ){
     const router = useRouter();
     const subtotal = carrinho.reduce((acc, item) => acc + item.price * item.quantity, 0);
   
@@ -16,7 +18,11 @@ export default function CardTotal({ carrinho }: CardTotalProps  ){
     })
 
     const total = subtotal + taxaEnvio;
-
+    const handleFinalizarCompra = () => {
+        alert("Compra finalizada com sucesso!");
+        limparCarrinho();
+        router.push("/");
+    }
     return(
         <section className="w-full max-w-md bg-[#EDE5F4] p-4 rounded-2xl shadow-md">
             <h2 className="text-[#4A4455] text-md">Resumo do Pedido</h2>
@@ -38,7 +44,7 @@ export default function CardTotal({ carrinho }: CardTotalProps  ){
 
             </div>
             <div className="flex flex-col gap-2 mt-4">
-               <BotaoGenerico texto="Finalizar Compra" onClick={() => alert("Finalizar Compra")} 
+               <BotaoGenerico texto="Finalizar Compra" onClick={() => handleFinalizarCompra() } 
                className="w-full mt-4 text-fundo-primario bg-cor-primaria p-3 rounded-2xl
                cursor-pointer hover:bg-hover"/>
 

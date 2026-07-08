@@ -7,6 +7,9 @@ type CarrinhoContextType = {
     carrinho: CarrinhoItem[];
     adicionarAoCarrinho: (produto: CarrinhoItem) => void;
     removerDoCarrinho: (produtoId: number) => void;
+    incrementarQuantidade: (produtoId: number) => void;
+    decrementarQuantidade: (produtoId: number) => void;
+    limparCarrinho: () => void;
 }
 
 export const CarrinhoContext = createContext<CarrinhoContextType | undefined>(undefined);
@@ -41,9 +44,33 @@ export function CarrinhoProvider({ children }: { children: React.ReactNode }) {
             return prevCarrinho;
         });
     };
+    const incrementarQuantidade = (produtoId: number) => {
+        setCarrinho((prevCarrinho) => {
+            return prevCarrinho.map(item => {
+                if(item.id === produtoId){
+                    return { ...item, quantity: item.quantity + 1 };
+                }
+                return item;
+            })
+        })
+    }
+    const decrementarQuantidade = (produtoId: number) => {
+        setCarrinho((prevCarrinho) => {
+            return prevCarrinho.map(item => {
+                if(item.id == produtoId && item.quantity > 1){
+                    return { ...item, quantity: item.quantity - 1 };
+                }
+                return item;
+            })
+        })
+    }
+    const limparCarrinho = () => {
+        setCarrinho([]);
+    }
 
     return (
-        <CarrinhoContext.Provider value={{ carrinho, adicionarAoCarrinho, removerDoCarrinho }}>
+        <CarrinhoContext.Provider value={{ carrinho, adicionarAoCarrinho, removerDoCarrinho, 
+            incrementarQuantidade,  decrementarQuantidade, limparCarrinho }}>
             {children}
         </CarrinhoContext.Provider>
     );
