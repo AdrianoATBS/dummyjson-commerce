@@ -2,19 +2,41 @@ import Image from "next/image";
 import { CiSearch } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
 import { FiUser } from "react-icons/fi";
+import { Categoria } from "@/features/categoria/type";
 import Link from "next/link";
-export default function Header() {
+import { getCategoria } from "@/features/categoria/services/getCategoria";
 
-    return (
+
+export default async function Header() {
+    const categorias = await getCategoria().catch(() => []) || [];
+    const categoriaLimitadas = categorias.slice(0, 3); 
+
+    return(
         <header className="w-full border-b border-borda bg-white shadow-md">
             <div className="max-w-7xl mx-auto flex items-center justify-between px-6 h-14">
 
-                <div className="w-full flex items-center gap-8 cursor-pointer">
+                <div className="flex items-center gap-8 cursor-pointer shrink-0">
                     <Link href="/">
                         <Image src="/logoH.png" alt="Logo" width={58} height={58} />
                     </Link>
                 </div>
-                
+                <div className="flex flex-1 items-center justify-center gap-8 px-4">
+
+                    <nav className="flex items-center justify-center gap-6 shrink-0">
+                        <Link href="/" className="text-cor-primaria font-medium hover:text-cor-primaria/50 transition-colors duration-200">
+                            Inicio
+                        </Link>
+                        {categoriaLimitadas.map((categoria) => (
+                            <Link key={categoria.slug} href={`/categoria/${categoria.slug}`} 
+                            className="text-cor-primaria font-medium hover:text-cor-primaria/50
+                            transition-colors duration-200">
+                                {categoria.name}
+                            </Link>
+                        ))}
+                    </nav>
+                </div>
+
+
                 <div className="flex items-center gap-4  relative">
                     <div className="flex items-center gap-2 bg-fundo-secundario px-4 py-1 ">
                         <CiSearch className="text-[#1D1A24] cursor-pointer hover:scale-105 
