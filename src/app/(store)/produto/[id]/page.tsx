@@ -5,7 +5,7 @@ import ProdutosRelacionados from "@/features/produtos/components/ProdutosRelacio
 import { getProdutosRelacionados } from "@/features/produtos/services/getProdutosRelacionados";
 import { embaralharProdutos } from "@/shared/utils/shuffleProdutos";
 import { notFound } from "next/navigation";
-
+import Breadcrumb from "@/shared/components/Breadcrumb";
 type Props = {
    params: {id: string}
 }
@@ -27,9 +27,15 @@ export default async function ProdutoDetalhesPage({ params }: Props) {
         (produtoIguais) => produtoIguais.id !== produto.id
     ).slice(0, 6);
 
+    const breadcrumbItems = [
+        {label: "Inicio", href: "/"},
+        {label: produto.category, href: `/categoria/${produto.category}`},
+        {label: produto.title, href: `/produto/${produto.id}`},
+    ]
     
     return(
         <main className="max-w-full mx-auto py-8 px-5">
+            <Breadcrumb items={breadcrumbItems} />
             <CardProdutoDetalhado produto={produto} />
             <ProdutosRelacionados produtos={produtosAleatorios } categoria={produto.category}/>
         </main>
