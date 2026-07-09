@@ -12,7 +12,7 @@ export default function ProdutoTopo({ produto }: ProdutoTopoProps) {
  
             <div className="md:col-span-5 flex flex-col justify-center">
                 <p className="uppercase text-xs tracking-widest text-cor-primaria mb-2">
-                    Coleção de primaria de 2026
+                    Coleção de primavera de 2026
                 </p>
                 <h1 className="text-5xl font-normal leading-tight mb-4">
                     A arte do <span className="text-cor-primaria block md:inline">Brilho Etéreo</span>
