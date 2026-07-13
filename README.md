@@ -8,6 +8,10 @@ O projeto foi criado com foco no desenvolvimento prático de aplicações fronte
 
 A aplicação simula um fluxo real de e-commerce, incluindo navegação de produtos, carrinho de compras e autenticação de usuário.
 
+## 📷 Preview
+
+![Preview do Viora](./public/fotoCapa.png)
+
 ---
 
 ## 🚀 Funcionalidades
@@ -92,6 +96,8 @@ src/
 
 ## 🔗 API Utilizada
 
+DummyJSON API
+
 https://dummyjson.com/
 
 ### Endpoints utilizados
@@ -127,5 +133,15 @@ npm run dev
 ## 🚧 Melhorias Futuras
 
 * Implementar sistema de busca
-* Melhorias de UI/UX
+* Responsividade para dispositivos móveis
 
+## ✅ Melhorias Implementadas 
+
+* Melhorias de UI/UX  ✅
+
+## Portfólio
+
+No meu portfólio você encontrará um vídeo demonstrativo desta aplicação, além de outros projetos desenvolvidos por mim.
+
+
+Portfólio: https://adriano-atbs.vercel.app/

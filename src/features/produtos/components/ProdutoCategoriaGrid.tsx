@@ -42,6 +42,8 @@ export default function ProdutoCategoriaGrid({ produtos }: ProdutoCategoriaGridP
     const produtosExibidos = paginaAtual === 1 ? produtosFiltrados.slice(0, produtosPorPagina) : 
     produtosFiltrados.slice((paginaAtual - 1) * produtosPorPagina, paginaAtual * produtosPorPagina);
     
+  
+
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, [paginaAtual]);

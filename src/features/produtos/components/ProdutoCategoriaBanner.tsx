@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import Link from "next/link";
 export default function ProdutoCategoriaBanner() {
     return(
         <section className="w-full h-72 items-center gap-2 p-4
@@ -13,7 +13,7 @@ export default function ProdutoCategoriaBanner() {
                     <p className="text-white font-medium">
                     Uma seleção exclusiva de produtos de vanguarda para cuidados com a pele e cosméticos artesanais
                     criada para elevar seu ritual diário.</p>
-                </div>
+                </div>           
         </section>
     )
 }

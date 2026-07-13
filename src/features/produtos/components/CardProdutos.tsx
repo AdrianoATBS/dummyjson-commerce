@@ -1,3 +1,4 @@
+import Breadcrumb from "@/shared/components/Breadcrumb";
 import { ProdutoDetalhado, ProdutoResumo } from "../type"
 import Image from "next/image";
 import { FaStar } from "react-icons/fa6";
@@ -12,11 +13,11 @@ interface CardProdutosProps {
 export default function CardProdutos({ produto }: CardProdutosProps){
         const calculoDesconto = produto.price * (produto.discountPercentage / 100);
         const precoComDesconto = produto.price - calculoDesconto;
+
     return(
-    
         <article className="flex flex-col justify-center items-center 
         rounded-lg p-4 w-full h-full hover:scale-105">
-            
+          
             <div className="flex flex-col w-72 h-72 items-center gap-2 bg-black  p-4
             overflow-hidden relative rounded-tl-2xl rounded-tr-2xl">
                 <Image src={produto.thumbnail} alt={produto.title} 
