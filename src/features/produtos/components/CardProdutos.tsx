@@ -1,9 +1,8 @@
-import Breadcrumb from "@/shared/components/Breadcrumb";
-import { ProdutoDetalhado, ProdutoResumo } from "../type"
+import { ProdutoDetalhado } from "../type"
 import Image from "next/image";
 import { FaStar } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
-
+import { useMemo } from "react";
 interface CardProdutosProps {
     produto: ProdutoDetalhado ; 
    
@@ -11,8 +10,12 @@ interface CardProdutosProps {
 
 
 export default function CardProdutos({ produto }: CardProdutosProps){
+    const precoFinal = useMemo(() => {
         const calculoDesconto = produto.price * (produto.discountPercentage / 100);
-        const precoComDesconto = produto.price - calculoDesconto;
+        console.log("Preço final calculado:", produto.price - calculoDesconto);
+        return produto.price - calculoDesconto;
+        
+    }, [produto.price, produto.discountPercentage])
 
     return(
         <article className="flex flex-col justify-center items-center 
@@ -38,14 +41,15 @@ export default function CardProdutos({ produto }: CardProdutosProps){
                     
                     </div>
                     <h2 className="h2 line-clamp-2 font-light text-[#1D1A24] ">{produto.title}</h2>
-
-                    <p className="text-xl font-bold text-[#1D1A24]"> ${precoComDesconto.toFixed(2)}</p>
+                    
+                    <p className="text-xl font-bold text-[#1D1A24]"> ${precoFinal.toFixed(2)}</p>
                     <div className="flex justify-start items-center gap-2">
                         {produto.discountPercentage > 0 && (
                             <p className="text-[#1D1A24] line-through"> ${produto.price.toFixed(2)}</p>
                         )}
-                        
-                        <p>({produto.discountPercentage.toFixed(0)}% de desconto)</p>
+                        {produto.discountPercentage > 0 && (
+                            <p>({produto.discountPercentage.toFixed(0)}% de desconto)</p>                      
+                        )}
                     </div>
                         
                     <div className="flex justify-center items-center gap-2 absolute top-27 right-2 
