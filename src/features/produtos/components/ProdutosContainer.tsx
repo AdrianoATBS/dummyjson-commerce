@@ -30,13 +30,14 @@ export default function ProdutosContainer({categorias}: ProdutosContainerProps) 
                 const data = await getProdutosPaginacao(paginaAtual, TAMANHHO_DA_PAGINA);
                 setProdutos(data.products);
                 setTotalProdutos(data.total);
+                window.scrollTo({ top: 0, behavior: "smooth" });
             }
             catch(error){
+                console.error(error);
                 setErro("Erro ao buscar produtos.");  
                 
             }
             finally{
-                window.scrollTo({ top: 0, behavior: "smooth" });
                 setCarregando(false);
             }
         }
@@ -68,13 +69,13 @@ export default function ProdutosContainer({categorias}: ProdutosContainerProps) 
             <ListaCategoria categorias={categorias} />
         </div>
         
-        <ProdutoGrid products={produtos} produtoDestaque={produtos[0]} paginaAtual={paginaAtual} />
+        <ProdutoGrid products={produtos} paginaAtual={paginaAtual} />
         
        
         {totalPaginas > 1 && (
     
         <div className="flex items-center justify-center gap-2 mt-4">
-            <BotaoGenerico texto={<IoIosArrowBack />} onClick={() => setPaginaAtual((prev) => Math.max(prev - 1, 1))}
+            <BotaoGenerico texto={<IoIosArrowBack />} disabled={paginaAtual === 1} onClick={() => setPaginaAtual((prev) => Math.max(prev - 1, 1))}
             className={`px-3 py-1 text-[#4A4455] ${paginaAtual === 1 ?
              "opacity-50 cursor-not-allowed" : "cursor-pointer hover:text-cor-primaria"}`} />
             
@@ -96,11 +97,12 @@ export default function ProdutosContainer({categorias}: ProdutosContainerProps) 
                     return <span key="reticencias-inicio" className="px-3 py-1">...</span>
                 }
                 if(pagina === totalPaginas - 1 && paginaAtual < totalPaginas - 3){
+                   
                     return <span key="reticencias-fim" className="px-3 py-1">...</span>
                 }
                 return null;
             })}
-            <BotaoGenerico texto={<IoIosArrowForward />} onClick={() => setPaginaAtual((prev) => 
+            <BotaoGenerico texto={<IoIosArrowForward />} disabled={paginaAtual === totalPaginas} onClick={() => setPaginaAtual((prev) => 
             Math.min(prev + 1, totalPaginas))}
             className={`px-3 py-1 text-[#4A4455] ${paginaAtual === totalPaginas ?
              "opacity-50 cursor-not-allowed" : "cursor-pointer hover:text-cor-primaria"}`} />
