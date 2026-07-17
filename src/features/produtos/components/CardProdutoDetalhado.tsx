@@ -22,11 +22,6 @@ export default function CardProdutoDetalhado({ produto }: CardProdutoDetalhadoPr
     const precoFinal = produto.price * (1 - produto.discountPercentage / 100);
     
 
-    const handleDiminuirEstoque = () => {
-        if(estoque > 0){
-            setEstoque(prevEstoque => prevEstoque - 1);
-        }
-    }
     const handleAdicionarAoCarrinho = () => {
         if(estoque == 0){
             alert("Produto sem estoque disponível.");
@@ -40,7 +35,8 @@ export default function CardProdutoDetalhado({ produto }: CardProdutoDetalhadoPr
             thumbnail: produto.thumbnail,
             quantity: 1,
         });
-        handleDiminuirEstoque();
+        setEstoque(prevEstoque => prevEstoque - 1);
+       
     }
     const handleComprarAgora = () => {
         handleAdicionarAoCarrinho();
@@ -91,7 +87,7 @@ export default function CardProdutoDetalhado({ produto }: CardProdutoDetalhadoPr
                 ) : (
                     <p className="text-3xl font-bold">R$ {precoFinal.toFixed(2)}</p>
                 )}
-            <ProdutoDescricao produto={produto} />
+            <ProdutoDescricao descricao={produto.description} />
 
             <div className="h-full flex flex-col justify-center items-center gap-2 ">
                 <BotaoGenerico texto="Adicionar ao Carrinho" onClick={handleAdicionarAoCarrinho} 
