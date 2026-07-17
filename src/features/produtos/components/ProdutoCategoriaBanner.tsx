@@ -1,10 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 export default function ProdutoCategoriaBanner() {
     return(
         <section className="w-full h-72 items-center gap-2 p-4
             overflow-hidden relative shadow-xl rounded-lg border-2 border-black" >
-                <Image src="/Banner.png" alt="Banner" fill
+                <Image src="/Banner.png" alt="Banner promocional da coleção Spring 2026" fill
                     className=" object-cover " />
 
                 <div className="w-full max-w-xl flex flex-col items-start gap-1 absolute bottom-4 left-4 p-2">
