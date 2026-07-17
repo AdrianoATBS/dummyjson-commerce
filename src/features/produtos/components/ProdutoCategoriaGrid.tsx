@@ -16,34 +16,33 @@ export default function ProdutoCategoriaGrid({ produtos }: ProdutoCategoriaGridP
     
     const [paginaAtual, setPaginaAtual] = useState(1);
     const produtosPorPagina = 8;
-    const totalPaginas = Math.ceil(produtos.length / produtosPorPagina);
     
-    const categoriaQuantidade = produtos.length;
     
     const [minPreco, setMinPreco] = useState<number | null>(null);
     const [maxPreco, setMaxPreco] = useState<number | null>(null);
-
-  
-    const handlePrecoMinimo = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const  valor = event.target.value;
-        setMinPreco(valor ? parseFloat(valor) : null);
-    };
-    const handlePrecoMaximo = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const valor = event.target.value;
-        setMaxPreco(valor ? parseFloat(valor) : null);
+    
+    const atualizarPreco = (valor: string, tipo: "min" | "max") => {
+        const preco = valor ? parseFloat(valor) : null;
+        if(tipo === "min") {
+            setMinPreco(preco);
+        } else {
+            setMaxPreco(preco);
+        }
     }
     const produtosFiltrados = produtos.filter((produto) => {
         const precoValido = (minPreco === null || produto.price >= minPreco) 
         && (maxPreco === null || produto.price <= maxPreco);
         return precoValido;
     })
+    
+    const categoriaQuantidade = produtosFiltrados.length;
+    const totalPaginas = Math.ceil(produtosFiltrados.length / produtosPorPagina);
   
     
     const produtosExibidos = paginaAtual === 1 ? produtosFiltrados.slice(0, produtosPorPagina) : 
     produtosFiltrados.slice((paginaAtual - 1) * produtosPorPagina, paginaAtual * produtosPorPagina);
     
-  
-
+ 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, [paginaAtual]);
@@ -64,7 +63,7 @@ export default function ProdutoCategoriaGrid({ produtos }: ProdutoCategoriaGridP
                         [appearance:textfield] 
                         [&::-webkit-outer-spin-button]:appearance-none 
                         [&::-webkit-inner-spin-button]:appearance-none" 
-                        onChange={handlePrecoMinimo}/>
+                        onChange={(e) => atualizarPreco(e.target.value, "min")}/>
                     </label>
 
                     <label className="flex items-center gap-1 bg-[#F9F6FC] rounded-lg px-4 py-3 w-full border 
@@ -74,7 +73,7 @@ export default function ProdutoCategoriaGrid({ produtos }: ProdutoCategoriaGridP
                         className="w-full bg-transparent text-sm text-gray-800 outline-none [appearance:textfield] 
                         [&::-webkit-outer-spin-button]:appearance-none 
                         [&::-webkit-inner-spin-button]:appearance-none" 
-                        onChange={handlePrecoMaximo}/>
+                        onChange={(e) => atualizarPreco(e.target.value, "max")}/>
                     </label>
                 </div>
                 <p>Experiência do cliente</p>
