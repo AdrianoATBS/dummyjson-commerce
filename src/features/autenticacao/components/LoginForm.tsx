@@ -18,22 +18,22 @@ import { useRouter } from "next/navigation";
 export default function LoginForm() {
     const router = useRouter();
 
-    const [userName, setUsername] = useState("");
+    const [Email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [visivelSenha, setVisivelSenha] = useState(false);
 
     const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) =>{
         e.preventDefault();
         try{
-            const autenticacao = await loginUser(userName, password);
+            const autenticacao = await loginUser(Email, password);
             localStorage.setItem("autenticacao", JSON.stringify(autenticacao));
 
-            setUsername("");
+            setEmail("");
             setPassword("");
             
             router.push("/");
         }catch(error){
-            console.error("Erro ao fazer login:", error);
+            <p className="text-red-500">Error ao fazer login. Por favor, tente novamente.</p>
 
         }finally{
             console.log("Processo de login concluído.");
@@ -60,7 +60,7 @@ export default function LoginForm() {
             border border-borda shadow-lg  rounded-br-2xl rounded-tr-2xl">
                     <div className="flex flex-col justify-end items-start gap-2">
 
-                    <h2 className="h1 font-bold bg-gradient-to-r
+                    <h2 className="h1 font-bold bg-linear-to-r
                      from-hover to-cor-primaria bg-clip-text text-transparent
                      leading-tight ">Bem vindo de volta
                     </h2>
@@ -75,8 +75,8 @@ export default function LoginForm() {
                              text-texto-secundario w-4 h-4 ml-3 mt-[0.6rem] pointer-events-none" />
                             
                             <InputGenerico type="text" placeholder="seuEmail@dominio.com"
-                            value={userName}
-                            onChange={(e) => setUsername(e.target.value)}
+                            value={Email}
+                            onChange={(e) => setEmail(e.target.value)}
                             className="h3 bg-[#E8DFEE]/1120 border border-borda rounded-lg pl-6 px-3 py-2 shadow-sm
                             focus:outline-none focus:ring-2 focus:ring-cor-primaria "/>   
                                   
@@ -95,13 +95,19 @@ export default function LoginForm() {
                         className="h3 bg-[#E8DFEE]/1120 border border-borda rounded-lg pl-6 px-3 py-2 shadow-sm
                         focus:outline-none focus:ring-2 focus:ring-cor-primaria " />
                         {visivelSenha ? (
+                            <button onClick={() => setVisivelSenha(false)} >
+
                             <FaEyeSlash className="absolute top-9 right-3 translate-x-2/5 -translate-y-1/12
                             text-texto-secundario w-4 h-4 mr-3 mt-[0.6rem] cursor-pointer"
-                            onClick={() => setVisivelSenha(false)} />
+                            />
+                            </button>
                         ) : (
-                            <FaEye className="absolute top-9 right-3 translate-x-2/5 -translate-y-1/12
-                            text-texto-secundario w-4 h-4 mr-3 mt-[0.6rem] cursor-pointer"
-                            onClick={() => setVisivelSenha(true)} />
+                            <button onClick={() => setVisivelSenha(true)} >
+
+                                <FaEye className="absolute top-9 right-3 translate-x-2/5 -translate-y-1/12
+                                text-texto-secundario w-4 h-4 mr-3 mt-[0.6rem] cursor-pointer"
+                                />
+                            </button>
                         )}
                       
                         
@@ -117,8 +123,8 @@ export default function LoginForm() {
                             </label>
                         </div>
 
-                        <p className="text-cor-primaria text-sm cursor-pointer
-                        hover:text-hover hover:underline">Esqueceu sua senha ?</p>
+                        <button className="text-cor-primaria text-sm cursor-pointer
+                        hover:text-hover hover:underline">Esqueceu sua senha ?</button>
                     </div>
 
                     <BotaoGenerico texto="Entrar ->" 
@@ -134,10 +140,9 @@ export default function LoginForm() {
                          text-cor-primaria hover:text-hover hover:underline"> Cadastre-se</Link>
                     </p>
 
-                    <div className="w-full flex justify-between items-center
-                    4">
+                    <div className="w-full flex justify-between items-center">
                         <div className="border-b-2 border-borda w-24 h-1"></div>
-                        <p className="text-texto-secundario">Conecte com sua conta</p>
+                            <p className="text-texto-secundario">Conecte com sua conta</p>
                         <div className="border-b-2 border-borda w-24 h-1 "></div>
                     </div>
 
@@ -145,9 +150,9 @@ export default function LoginForm() {
                        
                         <FaGoogle className="w-full max-w-1/3 border border-borda
                         text-cor-primaria h-10 px-3 py-2 shadow-lg font-bold rounded-2xl
-                        cursor-pointer active:scale-95 hover:bg-[#F3F4F6]" />
+                        cursor-pointer active:scale-95 hover:bg-[#F3F4F6] "  />
                         
-                        <FaGithub className="w-full max-w-xs border border-borda
+                        <FaGithub  className="w-full max-w-xs border border-borda
                         text-cor-primaria h-10 px-3 py-2 shadow-lg font-bold rounded-2xl
                         cursor-pointer active:scale-95 hover:bg-[#F3F4F6] " />
                        

@@ -29,11 +29,18 @@ export  default function RegisterForm() {
     const handleSubmit  = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try{
-            const ageNumber = Number(senha);
-            if(isNaN(ageNumber) || ageNumber <= 0){
-                throw new Error("Informe uma senha válida.");
+            const senhaNumero = Number(senha);
+            if(isNaN(senhaNumero) || senhaNumero <= 0){
+                <p className="text-red-500">Informe uma senha válida.</p>
             }
-            const autenticacao = await registerUser(nomeTodo, email, ageNumber);
+            const senhaConfirmarNumero = Number(confirmarSenha);
+            if(isNaN(senhaConfirmarNumero) || senhaConfirmarNumero <= 0){
+                <p  className="text-red-500">Informe uma senha de confirmação válida.</p>
+            }
+            if(senhaNumero !== senhaConfirmarNumero){
+                <p className="text-red-500">As senhas não coincidem.</p>
+            }
+            const autenticacao = await registerUser(nomeTodo, email, senhaNumero);
             localStorage.setItem("autenticacao", JSON.stringify(autenticacao));
 
 
@@ -117,13 +124,17 @@ export  default function RegisterForm() {
                             focus:outline-none focus:ring-2 focus:ring-cor-primaria pl-7" />
                             
                             {visivelSenha ? (
-                                <FaEyeSlash className="absolute top-9 right-3 translate-x-2/5 -translate-y-1/12
-                                text-texto-secundario w-4 h-4 mr-3 mt-[0.6rem] cursor-pointer"
-                                onClick={() => setVisivelSenha(false)} />
+                                <button onClick={() => setVisivelSenha(false)}>
+                                    <FaEyeSlash className="absolute top-9 right-3 translate-x-2/5 -translate-y-1/12
+                                    text-texto-secundario w-4 h-4 mr-3 mt-[0.6rem] cursor-pointer"
+                                     />
+                                </button>
                             ): (
+                                <button onClick={() => setVisivelSenha(true)}>
                                 <FaEye className="absolute top-9 right-3 translate-x-2/5 -translate-y-1/12
                                 text-texto-secundario w-4 h-4 mr-3 mt-[0.6rem] cursor-pointer"
-                                onClick={() => setVisivelSenha(true)} />
+                                />
+                                </button>
                             )}
 
                     </div>
