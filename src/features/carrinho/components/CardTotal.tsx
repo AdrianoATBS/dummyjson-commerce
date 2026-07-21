@@ -23,6 +23,10 @@ export default function CardTotal({ carrinho, limparCarrinho }: CardTotalProps  
         limparCarrinho();
         router.push("/");
     }
+
+    const handleContinuarComprando = () => {
+        router.push("/");
+    }
     return(
         <section className="w-full max-w-md bg-[#EDE5F4] p-4 rounded-2xl shadow-md">
             <h2 className="text-[#4A4455] text-md">Resumo do Pedido</h2>
@@ -44,11 +48,11 @@ export default function CardTotal({ carrinho, limparCarrinho }: CardTotalProps  
 
             </div>
             <div className="flex flex-col gap-2 mt-4">
-               <BotaoGenerico texto="Finalizar Compra" onClick={() => handleFinalizarCompra() } 
+               <BotaoGenerico texto="Finalizar Compra" onClick={handleFinalizarCompra} 
                className="w-full mt-4 text-fundo-primario bg-cor-primaria p-3 rounded-2xl
                cursor-pointer hover:bg-hover"/>
 
-                <BotaoGenerico  texto="Continuar Comprando" onClick={() => router.push("/")}
+                <BotaoGenerico  texto="Continuar Comprando" onClick={handleContinuarComprando}
                 className="w-full mt-4 text-cor-primaria bg-fundo-secundario p-3 rounded-2xl
                 cursor-pointer "/>
             </div>
