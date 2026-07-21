@@ -1,7 +1,7 @@
 "use client";
 import { Categoria } from "../type";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation } from "swiper/modules";
+import { FreeMode } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -45,7 +45,7 @@ export default function ListaCategoria({categorias}: ListaCategoriaProps) {
                             h3 inline-block text-fundo-secundario bg-violet-600
                              hover:bg-violet-700 py-[0.4rem] px-5 
                              rounded-full transition-all duration-200 
-                             active:scale-95 cursor-pointerr">{categoria.name}</Link>         
+                             active:scale-95 cursor-pointer">{categoria.name}</Link>         
                         </SwiperSlide>
                     ))}
                 </Swiper>
